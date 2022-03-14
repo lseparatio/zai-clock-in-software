@@ -18,6 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route("/")
 def index():
+    flash("Test flash messages")
     return render_template("index.html")
 
 
