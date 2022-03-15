@@ -4,24 +4,65 @@
 <h3 class="center-align">Register</h3>
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+    <form class="col s12 m10 offset-m1" method="POST" action="{{ url_for('register') }}">
         <div class="card-panel">
             <!-- username -->
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6">
                     <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                    <input id="username" name="username" type="text" minlength="5" maxlength="20" data-length="20"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
+                    <label for="username">Username*</label>
+                    <span class="helper-text" data-error="Please use minimum 5 characters" data-success="✔️">Please use
+                        minimum 5 characters</span>
+                </div>
+                <!-- password -->
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="20" data-length="20"
+                        class="validate" required>
+                    <label for="password">Password*</label>
+                    <span class="helper-text" data-error="Please use minimum 5 characters" data-success="✔️">Please use
+                        minimum 5 characters</span>
                 </div>
             </div>
-            <!-- passowrd -->
+            <!--First Name-->
             <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
-                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+                    <input id="first_name" name="first_name" type="text" minlength="1" maxlength="20" data-length="20"
+                        pattern="^[a-zA-Z]{1,20}$" class="validate" required>
+                    <label for="first_name">First Name*</label>
+                    <span class="helper-text" data-error="Please enter your first name" data-success="✔️">Please enter
+                        your first name</span>
+                </div>
+                <!-- Last Name -->
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+                    <input id="last_name" name="last_name" type="text" minlength="1" maxlength="20" data-length="20"
+                        pattern="^[a-zA-Z]{1,20}$" class="validate" required>
+                    <label for="last_name">Last Name*</label>
+                    <span class="helper-text" data-error="Please enter your last name" data-success="✔️">Please enter
+                        your last name</span>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email*</label>
+                    <span class="helper-text" data-error="Please enter your email address" data-success="✔️">Please
+                        enter your email address</span>
+                </div>
+                <!--Phone Number-->
+                <div class="input-field col s12 m6">
+                    <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
+                    <input id="phone_number" name="phone_number" pattern="^[0-9]{11,14}$" type="tel" minlength="11"
+                        maxlength="14" data-length="14" class="validate" required>
+                    <label for="phone_number">Phone Number*</label>
+                    <span class="helper-text" data-error="Please enter your phone number" data-success="✔️">Please enter
+                        your phone number</span>
                 </div>
             </div>
             <!-- register -->
