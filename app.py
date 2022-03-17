@@ -1,7 +1,8 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, send_from_directory)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -17,11 +18,19 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+now = datetime.datetime.now()
+time_now = now.strftime("%Y-%m-%d %H:%M:%S")
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", time_now=time_now)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='img/favicon.ico')
 
 
 @app.route("/employees")

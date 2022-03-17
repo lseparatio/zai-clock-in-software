@@ -1,0 +1,28 @@
+:root {
+    --buttons: blue;
+    --text: #ffffff;
+    --nav: #bf360c;
+}
+
+
+
+
+body {
+    background-image: url('/static/img/pexels-pixabay-264636.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--text);
+    text-align: center;
+}
+
+#time {
+    background-color: var(--nav);
+    border-radius: 25px;
+}
+
+.number-collon {
+    background-color: var(--buttons);
+    text-align: center;
+    border: 1px yellow solid;
+    color: aliceblue;
+}
