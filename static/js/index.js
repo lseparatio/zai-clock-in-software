@@ -1,3 +1,19 @@
+document.addEventListener("DOMContentLoaded", function() {
+    currentTime()
+    let buttons = document.getElementsByClassName("click_nr");
+
+    for (let button of buttons) {
+        button.addEventListener("click", function() {
+            if (this.getAttribute("data-type") === "delete") {
+                document.location.reload(true)
+            } else {
+                let clockNumber = this.getAttribute("data-type");
+                let clockNumberDiv =  document.getElementById("clock_number");
+                clockNumberDiv.innerText += clockNumber              
+            }
+        });
+    }
+
 function currentTime() {
     let date = new Date();
     let hh = date.getHours();
@@ -21,5 +37,4 @@ function currentTime() {
     var t = setTimeout(function () { currentTime() }, 1000);
 
 }
-
-currentTime();
+})

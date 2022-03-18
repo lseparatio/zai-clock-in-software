@@ -1,46 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-<h3 id="time"></h3>
+<div class="row">
+    <div class="col s12 m10 offset-m1">
+        <h3 id="time"></h3>
+    </div>
+</div>
 
 
 <div class="row">
     <form class="col s12" method="POST" action="{{ url_for('register') }}">
-        <div class="card-panel">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
-                    <input id="phone_number" name="phone_number" pattern="^[0-9]{11,14}$" type="tel" minlength="11"
-                        maxlength="14" data-length="14" class="validate" required>
-                    <label for="phone_number">Clock In Number*</label>
-                    <span class="helper-text" data-error="Please enter your phone number" data-success="✔️">Please enter
-                        your phone number</span>
-                </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <h3 id="clock_number_text">Clock Nr:</h3>
+            </div>
+            <div class="col s12 m6">
+                <h3 id="clock_number" name="clock_number"></h3>
             </div>
         </div>
         <div class="row offset-s1">
-            <div class="number-collon col s4"><span class="flow-text">1</span></div>
-            <div class="number-collon col s4"><span class="flow-text">2</span></div>
-            <div class="number-collon col s4"><span class="flow-text">3</span></div>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="1" value="1">1</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="2" value="2">2</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="3" value="3">3</a>
         </div>
-        
+
         <div class="row offset-s1">
-            <div class="number-collon col s4"><span class="flow-text">4</span></div>
-            <div class="number-collon col s4"><span class="flow-text">5</span></div>
-            <div class="number-collon col s4"><span class="flow-text">6</span></div>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="4" value="4">4</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="5" value="5">5</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="6" value="6">6</a>
         </div>
-        
+
         <div class="row offset-s1">
-            <div class="number-collon col s4"><span class="flow-text">7</span></div>
-            <div class="number-collon col s4"><span class="flow-text">8</span></div>
-            <div class="number-collon col s4"><span class="flow-text">9</span></div>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="7" value="7">7</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="8" value="8">8</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="9" value="9">9</a>
         </div>
-        
+
         <div class="row offset-s1">
-            <div class="number-collon col s4"><span class="flow-text">Delete</span></div>
-            <div class="number-collon col s4"><span class="flow-text">0</span></div>
-            <div class="number-collon col s4"><span class="flow-text">Send</span></div>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="delete" value="Delete">Delete</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="0" value="0">0</a>
+            <a class="click_nr waves-effect waves-light btn-large col s4" data-type="submit" value="submit" type="submit"
+                name="click_nr action">Submit</a>
         </div>
     </form>
 </div>
