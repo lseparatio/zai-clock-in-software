@@ -18,13 +18,35 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-now = datetime.datetime.now()
-time_now = now.strftime("%Y-%m-%d %H:%M:%S")
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return render_template("index.html", time_now=time_now)
+    if request.method == "POST":
+        # Check if is clock in
+        are_in = mongo.db.clocked_in.find_one(
+            {"clock_in_nr": request.form.get("clock-number")})
+
+        if are_in:
+            # Clock out if is clock in already
+            flash("You was clock out successfully")
+            clock_out = {
+                "clock_in_nr": request.form.get("clock-number"),
+                "date": datetime.datetime.now().strftime("%m/%d/%Y"),
+                "time": datetime.datetime.now().strftime("%H:%M:%S")
+            }
+            mongo.db.clocked_out.insert_one(clock_out)
+        else:
+            # Clock in  if is clock out
+            flash("You was clock in successfully")
+            clock_in = {
+                "clock_in_nr": request.form.get("clock-number"),
+                "date": datetime.datetime.now().strftime("%m/%d/%Y"),
+                "time": datetime.datetime.now().strftime("%H:%M:%S")
+            }
+            mongo.db.clocked_in.insert_one(clock_in)
+
+    return render_template("index.html")
 
 
 @app.route('/favicon.ico')
@@ -35,7 +57,7 @@ def favicon():
 
 @app.route("/employees")
 def employess():
-    employees = mongo.db.employess.find()
+    employees = mongo.db.employess.find_one()
     return render_template("employees.html", employees=employees)
 
 

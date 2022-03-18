@@ -15,9 +15,21 @@ body {
     text-align: center;
 }
 
+h3 {
+    text-align: center;
+}
+
 #time {
     background-color: var(--nav);
     border-radius: 25px;
+    text-align: center;
+}
+
+
+#clock-number-text,
+#clock-number {
+    background-color: var(--nav);
+    border-radius: 25px; 
 }
 
 .number-collon {
@@ -25,4 +37,18 @@ body {
     text-align: center;
     border: 1px yellow solid;
     color: aliceblue;
+}
+
+.row .col.s3{
+
+    margin-left: 2vh;
+    padding-left: 1vh;
+    border-radius: 25px;
+}
+
+#clock-number {
+    text-align: center;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 2.92rem;
 }
