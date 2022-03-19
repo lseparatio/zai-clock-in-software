@@ -35,7 +35,13 @@ def index():
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
+            #Insert in clocked_out
             mongo.db.clocked_out.insert_one(clock_out)
+            clock_in = {
+                "clock_in_nr": request.form.get("clock-number")
+            }
+            #Delete from clocked_in
+            mongo.db.clocked_in.delete_one(clock_in)
         else:
             # Clock in  if is clock out
             flash("You was clock in successfully")
@@ -45,6 +51,10 @@ def index():
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
             mongo.db.clocked_in.insert_one(clock_in)
+            clock_out = {
+                "clock_in_nr": request.form.get("clock-number")
+            }
+            mongo.db.clocked_out.delete_one(clock_out)
 
     return render_template("index.html")
 
