@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let hh = date.getHours();
         let mm = date.getMinutes();
         let ss = date.getSeconds();
-        let dd = date.getDay();
-        let ll = date.getMonth();
+        let dd = date.getDate();
+        const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let ll = month[date.getMonth()];
         let yy = date.getFullYear();
 
 
@@ -28,13 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
         mm = (mm < 10) ? "0" + mm : mm;
         ss = (ss < 10) ? "0" + ss : ss;
         dd = (dd < 10) ? "0" + dd : dd;
-        ll = (ll < 10) ? "0" + ll : ll;
 
-        let currentDate = dd + "/" + ll + "/" + yy;
+        let currentDate = dd + " " + ll + " " + yy;
         let time = hh + ":" + mm + ":" + ss;
-
-        document.getElementById("time").innerHTML = `Date: ${currentDate} Time: ${time}`;
         setTimeout(function () { currentTime() }, 1000);
-
+        document.getElementById("time").innerHTML = `Date: ${currentDate} Time: ${time}`;
     }
 });
