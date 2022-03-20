@@ -26,6 +26,8 @@ def index():
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
             {"clock_in_nr": request.form.get("clock-number")})
+        are_out = mongo.db.clocked_out.find_one(
+            {"clock_in_nr": request.form.get("clock-number")})
         employee = mongo.db.employees.find_one(
             {"clock_nr": request.form.get("clock-number")})
 
@@ -45,6 +47,17 @@ def index():
             }
             #Insert in clocked_out
             mongo.db.clocked_out.insert_one(clock_out)
+            #Mark clock nr for deletion
+            clocks = {
+                "first_name": employee["first_name"],
+                "last_name": employee["last_name"],
+                "clock_nr": request.form.get("clock-number"),
+                "date_in": are_in["date"],
+                "time_in": are_in["time"],
+                "date": datetime.datetime.now().strftime("%m/%d/%Y"),
+                "time": datetime.datetime.now().strftime("%H:%M:%S")
+            }
+            mongo.db.clocks.insert_one(clocks)
             clock_in = {
                 "clock_in_nr": request.form.get("clock-number")
             }

@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-    currentTime()
+    currentTime();
     let buttons = document.getElementsByClassName("click-nr");
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "delete") {
-                document.location.reload(true)
+                document.location.reload(true);
             } else {
                 let clockNumber = this.getAttribute("data-type");
                 let clockNumberDiv = document.getElementById("clock-number");
-                clockNumberDiv.value += clockNumber
+                clockNumberDiv.value += clockNumber;
             }
         });
     }
@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
         dd = (dd < 10) ? "0" + dd : dd;
         ll = (ll < 10) ? "0" + ll : ll;
 
-        let currentDate = dd + ":" + ll + ":" + yy;
+        let currentDate = dd + "/" + ll + "/" + yy;
         let time = hh + ":" + mm + ":" + ss;
 
         document.getElementById("time").innerHTML = `Date: ${currentDate} Time: ${time}`;
-        var t = setTimeout(function () { currentTime() }, 1000);
+        setTimeout(function () { currentTime() }, 1000);
 
     }
-})
+});
