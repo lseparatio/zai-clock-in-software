@@ -26,10 +26,18 @@ def index():
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
             {"clock_in_nr": request.form.get("clock-number")})
+        employee = mongo.db.employees.find_one(
+            {"clock_nr": request.form.get("clock-number")})
 
-        if are_in:
+        if not employee:
+            # Check if clock in number exist in employees
+            flash("Your clock number is wrong")
+            return render_template("index.html")
+
+        elif are_in:
             # Clock out if is clock in already
-            flash("You was clock out successfully")
+            flash(str(employee["first_name"]) + " " + str(employee["last_name"]
+                                                          ) + ", " + "you was clock out successfully!")
             clock_out = {
                 "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
@@ -40,11 +48,13 @@ def index():
             clock_in = {
                 "clock_in_nr": request.form.get("clock-number")
             }
-            #Delete from clocked_in
+            # Delete from clocked_in
             mongo.db.clocked_in.delete_one(clock_in)
+
         else:
             # Clock in  if is clock out
-            flash("You was clock in successfully")
+            flash(str(employee["first_name"]) + " " + str(employee["last_name"]
+                                                          ) + ", " + "you was clock in successfully!")
             clock_in = {
                 "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
