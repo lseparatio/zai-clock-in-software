@@ -28,7 +28,7 @@ def index():
             {"clock_in_nr": request.form.get("clock-number")})
         are_out = mongo.db.clocked_out.find_one(
             {"clock_in_nr": request.form.get("clock-number")})
-        employee = mongo.db.employees.find_one(
+        employee = mongo.db.employess.find_one(
             {"clock_nr": request.form.get("clock-number")})
 
         if not employee:
@@ -86,12 +86,6 @@ def index():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='img/favicon.ico')
-
-
-@app.route("/employees")
-def employess():
-    employees = mongo.db.employess.find_one()
-    return render_template("employees.html", employees=employees)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -164,6 +158,11 @@ def dashboard(username):
         
     return redirect(url_for("login"))
 
+
+@app.route("/employess")
+def employess():
+    employess = list(mongo.db.employess.find())
+    return render_template("employess.html", employess=employess)
 
 @app.route("/logout")
 def logout():

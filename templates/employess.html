@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{%for employee in employess%}
+<h4: class="employess">{{ employee.first_name}}</h4:>
+<h4: class="employess">{{ employee.last_name}}</h4:>
+<h4: class="employess">{{ employee.clock_nr}}</h4:>
+{%endfor%}
+{%endblock%}
