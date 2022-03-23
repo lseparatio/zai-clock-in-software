@@ -13,6 +13,7 @@ body {
     background-size: cover;
     color: var(--text);
     text-align: center;
+    min-height: 100%;
 }
 
 h3 {
@@ -30,6 +31,7 @@ h3 {
 #clock-number {
     background-color: var(--nav);
     border-radius: 25px; 
+    border-bottom: 0px;
 }
 
 .number-collon {

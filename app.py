@@ -47,7 +47,7 @@ def index():
             }
             #Insert in clocked_out
             mongo.db.clocked_out.insert_one(clock_out)
-            #Mark clock nr for deletion
+            # Mark clock nr for deletion
             clocks = {
                 "first_name": employee["first_name"],
                 "last_name": employee["last_name"],
@@ -157,10 +157,11 @@ def dashboard(username):
     # grab the session user's username from db
     username = mongo.db.admin.find_one(
         {"username": session["user"]})["username"]
-
+    admin = list(mongo.db.admin.find())
+    print(admin)
     if session["user"]:
-        return render_template("dashboard.html", username=username)
-
+        return render_template("dashboard.html", username=username, admin=admin)
+        
     return redirect(url_for("login"))
 
 
