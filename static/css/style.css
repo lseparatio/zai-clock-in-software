@@ -59,3 +59,19 @@ h3 {
     border-radius: 25px;
     
 }
+
+th,
+td {
+    border-radius: 25px;
+    color: var(--text);
+}
+
+tr {
+    padding-bottom: 2px;
+    padding-right: 2px;
+}
+
+.container {
+    background-color: var(--nav);
+    margin-top: 5px;
+}

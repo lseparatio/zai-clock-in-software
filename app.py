@@ -152,17 +152,21 @@ def dashboard(username):
     username = mongo.db.admin.find_one(
         {"username": session["user"]})["username"]
     admin = list(mongo.db.admin.find())
-    print(admin)
     if session["user"]:
         return render_template("dashboard.html", username=username, admin=admin)
-        
-    return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
 
 
-@app.route("/employess")
-def employess():
+@app.route("/employess/<username>", methods=["GET", "POST"])
+def employess(username):
     employess = list(mongo.db.employess.find())
-    return render_template("employess.html", employess=employess)
+    username = mongo.db.admin.find_one(
+        {"username": session["user"]})["username"]
+    if session["user"]:
+        return render_template("employess.html", username=username, employess=employess)
+    else:
+        return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():
