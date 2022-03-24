@@ -166,6 +166,7 @@ def dashboard(username):
 @app.route("/employess/<username>", methods=["GET", "POST"])
 def employess(username):
     try:
+        #List all employee
         employess = list(mongo.db.employess.find())
         username = session["user"]
         return render_template("employess.html", username=username, employess=employess)
@@ -173,9 +174,21 @@ def employess(username):
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
+
+@app.route("/<username>/add-employee", methods=["GET", "POST"])
+def add_employee(username):
+    try:
+        employess = list(mongo.db.employess.find())
+        username = session["user"]
+        return render_template("add-employee.html", username=username, employess=employess)
+    except KeyError:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
+    # Remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("index"))
