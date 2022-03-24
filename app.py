@@ -1,5 +1,6 @@
 import os
 import datetime
+import random
 from flask import (
     Flask, abort, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
@@ -169,46 +170,58 @@ def employess():
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
     else:
-        #List all employee
+        # List all employee
         employess = list(mongo.db.employess.find())
         return render_template("employess.html", employess=employess)
 
 
 @app.route("/add-employee", methods=["GET", "POST"])
 def add_employee():
+    # Check if autontificated
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
     else:
-        if request.method == "POST":
-            first_name = mongo.db.employess.find_one(
-            {"first_name": request.form.get("first_name").lower()})
-            last_name = mongo.db.employess.find_one(
-            {"last_name": request.form.get("last_name").lower()})
-            #Check if First Name and Last Name exist already in dayabase to avoid duplicates
-            if first_name and last_name:
-                flash("This persone is already in database please check list of employess")
-                return render_template("add-employee.html")
+        # Generating a rondom clock_nr
+        rondom_clock_nr = random.randint(1111, 9999)
+        check_rondom_clock_nr = mongo.db.employess.find_one(
+            {"clock_nr": rondom_clock_nr})
 
-            else:
-                add_employee = {
-                    "first_name": request.form.get("first_name").lower(),
-                    "last_name": request.form.get("last_name").lower(),
-                    "email": request.form.get("email"),
-                    "phone_number": request.form.get("phone_number"),
-                    "departament": request.form.get("departament"),
-                    "clock_nr": request.form.get("clock-in-number"),
-                    "start_date": request.form.get("start-date"),
-                    "start_time": request.form.get("start-time"),
-                    "end_date": request.form.get("end-date"),
-                    "end_time": request.form.get("end-time"),
-                    "registered_by": session["user"]
+        while check_rondom_clock_nr:          
+            rondom_clock_nr += 1
+           
+        else:
+            if request.method == "POST":
+                first_name = mongo.db.employess.find_one(
+                    {"first_name": request.form.get("first_name").lower()})
+                last_name = mongo.db.employess.find_one(
+                    {"last_name": request.form.get("last_name").lower()})
+                # Check if First Name and Last Name exist already in dayabase to avoid duplicates
+                if first_name and last_name: 
+                    flash(
+                        "This persone is already in database please check list of employess")
+                    return render_template("add-employee.html")
+
+                else:
+
+                    add_employee = {
+                        "first_name": request.form.get("first_name").lower(),
+                        "last_name": request.form.get("last_name").lower(),
+                        "email": request.form.get("email"),
+                        "phone_number": request.form.get("phone_number"),
+                        "departament": request.form.get("departament"),
+                        "clock_nr": int(request.form.get("clock-in-number")),
+                        "start_date": request.form.get("start-date"),
+                        "start_time": request.form.get("start-time"),
+                        "end_date": request.form.get("end-date"),
+                        "end_time": request.form.get("end-time"),
+                        "registered_by": session["user"]
                     }
-                #Add new employee to database.
-                mongo.db.employess.insert_one(add_employee)
-                flash("Employee registered successfully")
-        return render_template("add-employee.html", employess=employess)
+                    # Add new employee to database.
+                    mongo.db.employess.insert_one(add_employee)
+                    flash("Employee registered successfully")
+        return render_template("add-employee.html", clock_nr=rondom_clock_nr)
 
 
 @app.route("/logout")

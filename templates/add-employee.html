@@ -64,7 +64,8 @@
                     <div class="input-field col s12 m6">
                         <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
                         <input id="clock-in-number" name="clock-in-number" pattern="^[0-9]{11,14}$" type="text"
-                            minlength="11" maxlength="14" data-length="14" class="validate" value="5555" readonly required>
+                            minlength="11" maxlength="14" data-length="14" class="validate" value="{{clock_nr}}"
+                            readonly required>
                         <label for="clock-in-number">Clock Number*</label>
                         <span class="helper-text" data-error="Please try again" data-success="✔️">Auto generated clock
                             number.</span>
