@@ -152,38 +152,36 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/dashboard/<username>", methods=["GET", "POST"])
-def dashboard(username):
-    try:
+@app.route("/dashboard/", methods=["GET", "POST"])
+def dashboard():
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+    else:
         admin = list(mongo.db.admin.find())
         username = session["user"]
         return render_template("dashboard.html", username=username, admin=admin)
-    except KeyError:
+
+
+@app.route("/employess/", methods=["GET", "POST"])
+def employess():
+    if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
-
-
-@app.route("/employess/<username>", methods=["GET", "POST"])
-def employess(username):
-    try:
+    else:
         #List all employee
         employess = list(mongo.db.employess.find())
-        username = session["user"]
-        return render_template("employess.html", username=username, employess=employess)
-    except KeyError:
+        return render_template("employess.html", employess=employess)
+
+
+@app.route("/add-employee", methods=["GET", "POST"])
+def add_employee():
+    if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
-
-
-@app.route("/<username>/add-employee", methods=["GET", "POST"])
-def add_employee(username):
-    try:
+    else:
         employess = list(mongo.db.employess.find())
-        username = session["user"]
-        return render_template("add-employee.html", username=username, employess=employess)
-    except KeyError:
-        flash("You need to be authenticated to access this page!")
-        return redirect(url_for("login"))
+        return render_template("add-employee.html", employess=employess)
 
 
 @app.route("/logout")

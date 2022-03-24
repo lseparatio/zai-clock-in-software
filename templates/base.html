@@ -34,12 +34,12 @@
                 <a href="{{ url_for('index') }}" class="brand-logo">Clock In</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('employess' , username=session['user']) }}">Employess</a></li>
-                    <li><a href="{{ url_for('add_employee' , username=session['user']) }}">Add Employee</a></li>
+                    <li><a href="{{ url_for('employess') }}">Employess</a></li>
+                    <li><a href="{{ url_for('add_employee') }}">Add Employee</a></li>
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
-                    <li><a href="{{ url_for('dashboard', username=session['user']) }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 </ul>
             </div>
@@ -50,12 +50,12 @@
             <li>
                 <h4 class="center-align light-blue-text text-darken 4">Clock In</h4>
             </li>
-            <li><a href="{{ url_for('employess' , username=session['user']) }}">Employess</a></li>
-            <li><a href="{{ url_for('add_employee' , username=session['user']) }}">Add Employee</a></li>
+            <li><a href="{{ url_for('employess') }}">Employess</a></li>
+            <li><a href="{{ url_for('add_employee') }}">Add Employee</a></li>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="{{ url_for('dashboard', username=session['user']) }}">Dashboard</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
     </header>
