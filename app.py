@@ -1,7 +1,7 @@
 import os
 import datetime
 from flask import (
-    Flask, flash, render_template,
+    Flask, abort, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -18,6 +18,12 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -148,24 +154,23 @@ def login():
 
 @app.route("/dashboard/<username>", methods=["GET", "POST"])
 def dashboard(username):
-    # grab the session user's username from db
-    username = mongo.db.admin.find_one(
-        {"username": session["user"]})["username"]
-    admin = list(mongo.db.admin.find())
-    if session["user"]:
+    try:
+        admin = list(mongo.db.admin.find())
+        username = session["user"]
         return render_template("dashboard.html", username=username, admin=admin)
-    else:
+    except KeyError:
+        flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
 
 @app.route("/employess/<username>", methods=["GET", "POST"])
 def employess(username):
-    employess = list(mongo.db.employess.find())
-    username = mongo.db.admin.find_one(
-        {"username": session["user"]})["username"]
-    if session["user"]:
+    try:
+        employess = list(mongo.db.employess.find())
+        username = session["user"]
         return render_template("employess.html", username=username, employess=employess)
-    else:
+    except KeyError:
+        flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
 @app.route("/logout")
