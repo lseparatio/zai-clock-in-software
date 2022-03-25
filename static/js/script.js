@@ -1,21 +1,23 @@
 $(document).ready(function () {
-    $('.sidenav').sidenav({ edge: "right" });
+  $('.sidenav').sidenav({ edge: "right" });
 });
 
 $(document).ready(function () {
-    $('input#username, input#password, input#phone_number').characterCounter();
+  $('input#username, input#password, input#phone_number').characterCounter();
 });
 
 $(document).ready(function () {
-    $('.fixed-action-btn').floatingActionButton();
+  $('.fixed-action-btn').floatingActionButton();
 });
 
 
 const ndef = new NDEFReader();
 
 async function startScanning() {
- ndef.scan();
+  ndef.scan();
   ndef.onreading = event => {
     /* handle NDEF messages */
   };
 }
+
+startScanning();
