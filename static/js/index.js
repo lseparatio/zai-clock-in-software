@@ -59,8 +59,7 @@ if ('NDEFReader' in window) {
                     if (record.recordType == "text") {
                         const textDecoder = new TextDecoder(record.encoding);
                         let code = textDecoder.decode(record.data);
-                        let place = document.getElementById("clock-number");
-                        place.innerText = code;
+                        document.getElementById("clock-number").innerHTML = code;
                     }
                 }
             };
