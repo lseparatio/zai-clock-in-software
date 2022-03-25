@@ -33,11 +33,11 @@ if ('NDEFReader' in window) {
       ndef.scan().then(() => {
 
         ndef.onreadingerror = () => {
-           // Could not scan a tag, try another
+           
         };
 
         ndef.onreading = event => {
-          //Scanned a tag successfully
+          console.log(ndef)
         };
 
       }).catch(error => {
