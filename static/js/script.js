@@ -11,13 +11,38 @@ $(document).ready(function () {
 });
 
 
-const ndef = new NDEFReader();
+if ('NDEFReader' in window) {
 
-async function startScanning() {
-  ndef.scan();
-  ndef.onreading = event => {
-    /* handle NDEF messages */
-  };
+  navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
+
+      if (nfcStatus.state === "granted") {
+          startScanning();
+      } else {
+
+        document.querySelector("#scan").onclick = event => {
+          startScanning();
+        };
+
+      }
+
+  });
+
+  function startScanning(){
+      const ndef = new NDEFReader();
+
+      ndef.scan().then(() => {
+
+        ndef.onreadingerror = () => {
+           // Could not scan a tag, try another
+        };
+
+        ndef.onreading = event => {
+          //Scanned a tag successfully
+        };
+
+      }).catch(error => {
+        /// Something wrong with hardware
+      });
+  }
+
 }
-
-startScanning();
