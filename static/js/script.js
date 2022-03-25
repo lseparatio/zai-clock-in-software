@@ -20,7 +20,7 @@ async function startScanning() {
   };
 }
 
-const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+const nfcPermissionStatus =  navigator.permissions.query({ name: "nfc" });
 if (nfcPermissionStatus.state === "granted") {
   // NFC access was previously granted, so we can start NFC scanning now.
   startScanning();
