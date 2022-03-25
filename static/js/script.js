@@ -37,7 +37,7 @@ if ('NDEFReader' in window) {
         };
 
         ndef.onreading = event => {
-          console.log(ndef)
+          console.log(ndef.onreading)
         };
 
       }).catch(error => {
