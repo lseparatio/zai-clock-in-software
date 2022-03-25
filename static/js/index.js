@@ -36,3 +36,35 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("time").innerHTML = `Date: ${currentDate} Time: ${time}`;
     }
 });
+
+if ('NDEFReader' in window) {
+    navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
+        if (nfcStatus.state === "granted") {
+            startScanning();
+        } else {
+            document.querySelector("#scan").onclick = event => {
+                startScanning();
+            };
+        }
+    });
+
+    function startScanning() {
+        const ndef = new NDEFReader();
+        ndef.scan().then(() => {
+            ndef.onreadingerror = () => {
+            };
+            ndef.onreading = event => {
+                const message = event.message;
+                for (const record of message.records) {
+                    if (record.recordType == "text") {
+                        const textDecoder = new TextDecoder(record.encoding);
+                        let code = textDecoder.decode(record.data);
+                        document.getElementById("clock-number").innerText(code)
+                    }
+                }
+            };
+        }).catch(error => {
+            /// Something wrong with hardware
+        });
+    }
+}
