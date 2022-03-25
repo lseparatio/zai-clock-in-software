@@ -11,18 +11,24 @@ $(document).ready(function () {
 });
 
 
-if ('NDEFReader' in window) { 
-let ndef = new NDEFReader();
-ndef.scan().then(() => {
-    console.log("Scan started successfully.");
-    ndef.onreadingerror = () => {
-        console.log("Cannot read data from the NFC tag. Try another one?");
-    };
-    ndef.onreading = event => {
-        console.log("NDEF message read. ");
-        alert(`ndef`)
-    };
-}).catch(error => {
-    console.log(`Error! Scan failed to start: ${error}.`);
-});
+const ndef = new NDEFReader();
+
+async function startScanning() {
+  await ndef.scan();
+  ndef.onreading = event => {
+    /* handle NDEF messages */
+  };
+}
+
+const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+if (nfcPermissionStatus.state === "granted") {
+  // NFC access was previously granted, so we can start NFC scanning now.
+  startScanning();
+} else {
+  // Show a "scan" button.
+  document.querySelector("#scanButton").style.display = "block";
+  document.querySelector("#scanButton").onclick = event => {
+    // Prompt user to allow UA to send and receive info when they tap NFC devices.
+    startScanning();
+  };
 }
