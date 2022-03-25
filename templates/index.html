@@ -9,7 +9,8 @@
 
 
 <div class="row">
-    <form class="col s9 offset-s2 offset-m2" method="POST" action="{{ url_for('index') }}">
+    <form id="clock-in-form" maxlength="4" data-length="4" class="col s9 offset-s2 offset-m2" method="POST"
+        action="{{ url_for('index') }}">
 
         <div class="col s12 m8 offset-m1">
             <input type="text" id="clock-number" name="clock-number" readonly>

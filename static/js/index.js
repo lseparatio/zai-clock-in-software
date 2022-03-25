@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     currentTime();
     let buttons = document.getElementsByClassName("click-nr");
 
+
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "delete") {
@@ -67,3 +68,14 @@ if ('NDEFReader' in window) {
         });
     }
 }
+
+function autoSend() {
+    let value = document.getElementById("clock-number");
+    if (value.value.length != 4) {
+        console.log(value.value.length);
+    } else {
+        document.getElementById("clock-in-form").submit();
+    }
+    setTimeout(function () { autoSend(); }, 1000);
+}
+autoSend();
