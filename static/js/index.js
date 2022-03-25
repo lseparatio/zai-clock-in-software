@@ -58,7 +58,7 @@ if ('NDEFReader' in window) {
                 for (const record of message.records) {
                     if (record.recordType == "text") {
                         const textDecoder = new TextDecoder(record.encoding);
-                        document.getElementById("clock-number").innerHTML = textDecoder.decode(record.data);
+                        document.getElementById("clock-number").value = textDecoder.decode(record.data);
                     }
                 }
             };
