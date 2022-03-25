@@ -63,7 +63,7 @@ if ('NDEFReader' in window) {
                 }
             };
         }).catch(error => {
-            /// Something wrong with hardware
+            console.log(`Error! Scan failed to start: ${error}.`);
         });
     }
 }
