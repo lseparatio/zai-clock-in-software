@@ -11,8 +11,8 @@ $(document).ready(function () {
 });
 
 
-const ndef = new NDEFReader();
 if ('NDEFReader' in window) { 
+let ndef = new NDEFReader();
 ndef.scan().then(() => {
     console.log("Scan started successfully.");
     ndef.onreadingerror = () => {
