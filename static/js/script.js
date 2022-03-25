@@ -14,7 +14,7 @@ $(document).ready(function () {
 const ndef = new NDEFReader();
 
 async function startScanning() {
-  await ndef.scan();
+ ndef.scan();
   ndef.onreading = event => {
     /* handle NDEF messages */
   };
