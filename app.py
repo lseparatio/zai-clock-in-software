@@ -188,9 +188,9 @@ def add_employee():
         check_rondom_clock_nr = mongo.db.employess.find_one(
             {"clock_nr": rondom_clock_nr})
 
-        while check_rondom_clock_nr:          
+        while check_rondom_clock_nr:
             rondom_clock_nr += 1
-           
+
         else:
             if request.method == "POST":
                 first_name = mongo.db.employess.find_one(
@@ -198,7 +198,7 @@ def add_employee():
                 last_name = mongo.db.employess.find_one(
                     {"last_name": request.form.get("last_name").lower()})
                 # Check if First Name and Last Name exist already in dayabase to avoid duplicates
-                if first_name and last_name: 
+                if first_name and last_name:
                     flash(
                         "This persone is already in database please check list of employess")
                     return render_template("add-employee.html")
