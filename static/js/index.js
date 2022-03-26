@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    /*
+    This function is only to show date and time on front page
+    */
     currentTime();
     let buttons = document.getElementsByClassName("click-nr");
 
@@ -39,6 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 if ('NDEFReader' in window) {
+    /** 
+    This function is checking if NDEF is on
+    because at this time NFC in browser is 
+    suported by Chrome on Android and webview
+    only. If is on then we scan for NFC tags
+    and decode and send the information in clock
+    number input field.
+    */
     navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
         if (nfcStatus.state === "granted") {
             startScanning();
@@ -70,6 +81,10 @@ if ('NDEFReader' in window) {
 }
 
 function autoSend() {
+    /*
+    This function is auto sending the form
+    when are 4 caracters in form.
+    */
     let value = document.getElementById("clock-number");
     if (value.value.length != 4) {
         console.log(value.value.length);

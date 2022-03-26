@@ -1,5 +1,5 @@
 :root {
-    --buttons: blue;
+    --buttons: #311b92;
     --text: #ffffff;
     --nav: #bf360c;
 }
@@ -9,7 +9,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color: var(--text);
-
     min-height: 100%;
 }
 
@@ -18,7 +17,7 @@ h3 {
 }
 
 #time {
-    background-color: var(--nav);
+    background-color: var(--buttons);
     border-radius: 25px;
     text-align: center;
 }
@@ -26,7 +25,7 @@ h3 {
 
 #clock-number-text,
 #clock-number {
-    background-color: var(--nav);
+    background-color: var(--buttons);
     border-radius: 25px; 
     border-bottom: 0px;
 }
@@ -75,4 +74,11 @@ tr {
 
 #brand {
     text-align: left;
+}
+
+.click-nr,
+.submit,
+.delete,
+#clock-number {
+    background-color: var(--buttons);
 }

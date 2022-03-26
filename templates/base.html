@@ -29,7 +29,7 @@
 <body id="scan">
     <header>
         <!-- top navbar -->
-        <nav class="nav-extended text-shadow deep-orange darken-4">
+        <nav class="nav-extended text-shadow deep-purple darken-4">
             <div class="nav-wrapper">
                 <a href="{{ url_for('index') }}" class="brand-logo">Clock In</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -46,17 +46,18 @@
         </nav>
 
         <!-- mobile sidenav -->
-        <ul class="sidenav text-shadow deep-orange darken-4" id="mobile-demo">
+        <ul class="sidenav text-shadow deep-purple darken-4" id="mobile-demo">
             <li>
-                <h4 class="center-align light-blue-text text-darken 4">Clock In</h4>
+                <h4 class="center-align white-text text-darken 4">Clock In</h4>
             </li>
-            <li><a href="{{ url_for('employess') }}">Employess</a></li>
-            <li><a href="{{ url_for('add_employee') }}">Add Employee</a></li>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('employess') }}">Employess</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('add_employee') }}">Add Employee</a>
+            </li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('index') }}">Home</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('login') }}">Login</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('register') }}">Register</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a class="center-align white-text text-darken 4" href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
     </header>
 

@@ -9,11 +9,12 @@
 
 
 <div class="row">
-    <form id="clock-in-form" maxlength="4" data-length="4" class="col s9 offset-s2 offset-m2" method="POST"
-        action="{{ url_for('index') }}">
+    <form id="clock-in-form" maxlength="4" data-length="4" pattern="^[0-9]{4,4}$" class="col s9 offset-s2 offset-m2"
+        method="POST" action="{{ url_for('index') }}">
 
         <div class="col s12 m8 offset-m1">
             <input type="text" id="clock-number" name="clock-number" readonly>
+            <label for="clock-number" class="visuallyhidden">Clock Number</label>
         </div>
 
         <div class="row">
@@ -35,9 +36,9 @@
         </div>
 
         <div class="row">
-            <a class="waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}">Delete</a>
+            <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}">Delete</a>
             <a class="click-nr waves-effect waves-light btn-large col s3" data-type="0" value="0">0</a>
-            <button type="submit" class="waves-effect waves-light btn-large col s3">SUBMIT</button>
+            <button type="submit" class="submit waves-effect waves-light btn-large col s3">SUBMIT</button>
         </div>
     </form>
 </div>
