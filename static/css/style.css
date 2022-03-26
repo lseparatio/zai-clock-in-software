@@ -82,3 +82,7 @@ tr {
 #clock-number {
     background-color: var(--buttons);
 }
+
+.visuallyhidden {
+    display: none;
+}
