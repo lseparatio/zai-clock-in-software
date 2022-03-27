@@ -177,7 +177,7 @@ def employess():
 
 @app.route("/add-employee", methods=["GET", "POST"])
 def add_employee():
-    # Check if autontificated
+    # Check if autentificated
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))

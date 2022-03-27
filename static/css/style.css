@@ -1,7 +1,6 @@
 :root {
     --buttons: #311b92;
     --text: #ffffff;
-    --nav: #bf360c;
 }
 
 body {
@@ -63,8 +62,7 @@ tr {
 }
 
 .container {
-    background-color: var(--nav);
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #brand {
@@ -87,4 +85,8 @@ tr {
 
 .visuallyhidden {
     display: none;
+}
+
+.index-container {
+    background-color: none;
 }
