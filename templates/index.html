@@ -1,49 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="centred container offset-m1 index-container">
-<div class="row">
-    <div class="col s12 m12">
-        <h3 id="time"></h3>
-    </div>
-</div>
-
-
-<div class="row">
-    <form id="clock-in-form" maxlength="4" data-length="4" pattern="^[0-9]{4,4}$" class="col s9 offset-s2 offset-m2"
-        method="POST" action="{{ url_for('index') }}">
-
-        <div class="row">
-        <div class="col s12 m7 offset-m2  centred">
-            <input type="text" id="clock-number" name="clock-number" readonly>
-            <label for="clock-number" class="visuallyhidden">Clock Number</label>
+    <div class="row">
+        <div class="col s12 m12">
+            <h3 id="time"></h3>
         </div>
     </div>
 
-        <div class="row">
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="1" value="1" rel="nofollow">1</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="2" value="2" rel="nofollow">2</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="3" value="3" rel="nofollow">3</a>
-        </div>
 
-        <div class="row">
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="4" value="4" rel="nofollow">4</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="5" value="5" rel="nofollow">5</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="6" value="6" rel="nofollow">6</a>
-        </div>
+    <div class="row">
+        <form id="clock-in-form" maxlength="4" data-length="4" pattern="^[0-9]{4,4}$" class="col s9 offset-s2 offset-m2"
+            method="POST" action="{{ url_for('index') }}">
 
-        <div class="row">
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="7" value="7" rel="nofollow">7</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="8" value="8" rel="nofollow">8</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="9" value="9" rel="nofollow">9</a>
-        </div>
+            <div class="row">
+                <div class="col s12 m7 offset-m2  centred">
+                    <input type="text" id="clock-number" name="clock-number" readonly>
+                    <label for="clock-number" class="visuallyhidden">Clock Number</label>
+                </div>
+            </div>
 
-        <div class="row">
-            <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}">Delete</a>
-            <a class="click-nr waves-effect waves-light btn-large col s3" data-type="0" value="0" rel="nofollow">0</a>
-            <button type="submit" class="submit waves-effect waves-light btn-large col s3">SUBMIT</button>
-        </div>
-    </form>
-</div>
+            <div class="row">
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="1" value="1"
+                    rel="nofollow">1</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="2" value="2"
+                    rel="nofollow">2</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="3" value="3"
+                    rel="nofollow">3</a>
+            </div>
+
+            <div class="row">
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="4" value="4"
+                    rel="nofollow">4</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="5" value="5"
+                    rel="nofollow">5</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="6" value="6"
+                    rel="nofollow">6</a>
+            </div>
+
+            <div class="row">
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="7" value="7"
+                    rel="nofollow">7</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="8" value="8"
+                    rel="nofollow">8</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="9" value="9"
+                    rel="nofollow">9</a>
+            </div>
+
+            <div class="row">
+                <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}">Delete</a>
+                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="0" value="0"
+                    rel="nofollow">0</a>
+                <button type="submit" class="submit waves-effect waves-light btn-large col s3">SUBMIT</button>
+            </div>
+        </form>
+    </div>
 
 </div>
 
