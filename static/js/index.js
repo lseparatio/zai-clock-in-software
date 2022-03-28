@@ -42,7 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 if ('NDEFReader' in window) {
-    /** 
+    /* 
+    Change placeholder to 
+    confirm NFC is ready and working.
+    */
+    document.getElementById("clock-number").placeholder = "NFC READY";
+    
+    /*
     This function is checking if NDEF is on
     because at this time NFC in browser is 
     suported by Chrome on Android and webview
