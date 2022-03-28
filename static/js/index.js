@@ -61,11 +61,11 @@ if ('NDEFReader' in window) {
     });
 
     function startScanning() {
-    /* 
-    Change placeholder to 
-    confirm NFC is ready and working.
-    */
-    document.getElementById("clock-number").placeholder = "NFC READY";
+        /* 
+        Change placeholder to 
+        confirm NFC is ready and working.
+        */
+        document.getElementById("clock-number").placeholder = "NFC READY";
         const ndef = new NDEFReader();
         ndef.scan().then(() => {
             ndef.onreadingerror = () => {
