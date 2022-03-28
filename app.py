@@ -226,10 +226,16 @@ def add_employee():
 
 @app.route("/logout")
 def logout():
-    # Remove user from session cookie
-    flash("You have been logged out")
-    session.pop("user")
-    return redirect(url_for("index"))
+    if 'user' not in session:
+        #Preventing error page if direct link acces. Redirecting to login.
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+    else:
+        # Remove user from session cookie
+        flash("You have been logged out")
+        session.pop("user")
+        return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
