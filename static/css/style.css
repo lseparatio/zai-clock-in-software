@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 :root {
     --buttons: #311b92;
     --text: #ffffff;
@@ -47,7 +49,7 @@ h3 {
     text-align: center;
     color: var(--text);
     font-weight: 400;
-    font-size: 2.92rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 th,
@@ -74,6 +76,8 @@ tr {
 .delete,
 #clock-number {
     background-color: var(--buttons);
+    font-size: x-large;
+    font-family: 'Poppins', sans-serif;
 }
 
 .click-nr:hover,
@@ -89,4 +93,8 @@ tr {
 
 .index-container {
     background-color: none;
+}
+
+.flashes {
+border-radius: 25px;
 }

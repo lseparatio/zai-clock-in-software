@@ -14,9 +14,7 @@
     <meta property="og:description" content="Clock-In Software For Small Company" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="theme-color" content="#bf360c" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -74,7 +72,7 @@
         {% for message in messages %}
         <div class="row flashes center-align">
             <div class="col s12 m8 offset-m2">
-                <h4 class="text-shadow deep-purple darken-4 center-align">{{ message }}</h4>
+                <h4 class="text-shadow flashes deep-purple darken-4 center-align">{{ message }}</h4>
             </div>
         </div>
         {% endfor %}
