@@ -15,7 +15,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="theme-color" content="#bf360c" />
+    <meta name="theme-color" content="#311b92" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
@@ -30,8 +30,7 @@
         <nav class="nav-extended text-shadow deep-purple darken-4">
             <div class="nav-wrapper">
                 <a href="{{ url_for('index') }}" class="brand-logo">Clock In</a>
-                <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right"><i
-                        class="fas fa-bars"></i></a>
+                <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right">  <i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('employess') }}">Employess</a></li>
                     <li><a href="{{ url_for('add_employee') }}">Add Employee</a></li>

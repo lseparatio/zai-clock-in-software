@@ -45,8 +45,8 @@ def index():
 
         elif are_in:
             # Clock out if is clock in already
-            flash(str(employee["first_name"]) + " " + str(employee["last_name"]
-                                                          ) + ", " + "you was clock out successfully!")
+            flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
+                                                                       ) + ", " + "you was clock out successfully!")
             clock_out = {
                 "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
@@ -73,8 +73,8 @@ def index():
 
         else:
             # Clock in  if is clock out
-            flash(str(employee["first_name"]) + " " + str(employee["last_name"]
-                                                          ) + ", " + "you was clock in successfully!")
+            flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
+                                                                       ) + ", " + "you was clock in successfully!")
             clock_in = {
                 "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
@@ -112,7 +112,7 @@ def register():
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
             "email": request.form.get("email").lower(),
-            "phone_number": request.form.get("phone_number").lower()
+            "phone_number": request.form.get("phone_number")
         }
         mongo.db.admin.insert_one(register)
 
@@ -208,9 +208,9 @@ def add_employee():
                     add_employee = {
                         "first_name": request.form.get("first_name").lower(),
                         "last_name": request.form.get("last_name").lower(),
-                        "email": request.form.get("email"),
+                        "email": request.form.get("email").lower(),
                         "phone_number": request.form.get("phone_number"),
-                        "departament": request.form.get("departament"),
+                        "departament": request.form.get("departament").lower(),
                         "clock_nr": int(request.form.get("clock-in-number")),
                         "start_date": request.form.get("start-date"),
                         "start_time": request.form.get("start-time"),
@@ -227,7 +227,7 @@ def add_employee():
 @app.route("/logout")
 def logout():
     if 'user' not in session:
-        #Preventing error page if direct link acces. Redirecting to login.
+        # Preventing error page if direct link acces. Redirecting to login.
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
