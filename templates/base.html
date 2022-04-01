@@ -30,13 +30,12 @@
         <nav class="nav-extended text-shadow deep-purple darken-4">
             <div class="nav-wrapper">
                 <a href="{{ url_for('index') }}" class="brand-logo">Clock In</a>
-                <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right">  <i class="material-icons">menu</i></a>
+                <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right"> <i
+                        class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('employess') }}">Employess</a></li>
                     <li><a href="{{ url_for('add_employee') }}">Add Employee</a></li>
                     <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 </ul>
@@ -52,8 +51,6 @@
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('add_employee') }}">Add Employee</a>
             </li>
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('index') }}">Home</a></li>
-            <li><a class="center-align white-text text-darken 4" href="{{ url_for('login') }}">Login</a></li>
-            <li><a class="center-align white-text text-darken 4" href="{{ url_for('register') }}">Register</a></li>
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('dashboard') }}">Dashboard</a></li>
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>

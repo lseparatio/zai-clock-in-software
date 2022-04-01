@@ -98,12 +98,22 @@ def favicon():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        # check if username already exists in db
+        # check if username or email already exists in db
         existing_user = mongo.db.admin.find_one(
             {"username": request.form.get("username").lower()})
+        existing_email = mongo.db.admin.find_one(
+            {"email": request.form.get("email").lower()})
+        existing_phone = mongo.db.admin.find_one(
+            {"phone_number": request.form.get("phone_number")})
 
         if existing_user:
             flash("Username already exists")
+            return redirect(url_for("register"))
+        elif existing_email:
+            flash("Email already exists")
+            return redirect(url_for("register"))
+        elif existing_phone:
+            flash("Phone number already exists")
             return redirect(url_for("register"))
 
         register = {
@@ -117,9 +127,9 @@ def register():
         mongo.db.admin.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
-        return redirect(url_for("dashboard", username=session["user"]))
+        return redirect(url_for("dashboard", email=session["user"]))
 
     return render_template("register.html")
 
@@ -127,27 +137,27 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if username exists in db
+        # check if email exists in db
         existing_user = mongo.db.admin.find_one(
-            {"username": request.form.get("username").lower()})
+            {"email": request.form.get("email").lower()})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
+                session["user"] = request.form.get("email").lower()
                 flash("Welcome, {}".format(
-                    request.form.get("username")))
+                    request.form.get("email")))
                 return redirect(url_for(
-                    "dashboard", username=session["user"]))
+                    "dashboard", email=session["user"]))
             else:
                 # invalid password match
-                flash("Incorrect Username and/or Password")
+                flash("Incorrect Email and/or Password")
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't exist
-            flash("Incorrect Username and/or Password")
+            # email doesn't exist
+            flash("Incorrect Email and/or Password")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -159,9 +169,9 @@ def dashboard():
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
     else:
-        admin = list(mongo.db.admin.find())
-        username = session["user"]
-        return render_template("dashboard.html", username=username, admin=admin)
+        email = session["user"]
+        admin = mongo.db.admin.find({"email": session["user"]})
+        return render_template("dashboard.html", email=email, admin=admin)
 
 
 @app.route("/employess/", methods=["GET", "POST"])
