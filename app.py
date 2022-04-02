@@ -122,6 +122,7 @@ def register():
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
             "email": request.form.get("email").lower(),
+            "email_is_verified": False,
             "phone_number": request.form.get("phone_number")
         }
         mongo.db.admin.insert_one(register)
@@ -141,7 +142,12 @@ def login():
         existing_user = mongo.db.admin.find_one(
             {"email": request.form.get("email").lower()})
 
-        if existing_user:
+        if not (existing_user["email_is_verified"]):
+            # Check id email is verified
+            flash(
+                "You need to verify your email address please check your email for instructions")
+
+        elif existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
@@ -168,10 +174,10 @@ def dashboard():
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
-    else:
-        email = session["user"]
-        admin = mongo.db.admin.find({"email": session["user"]})
-        return render_template("dashboard.html", email=email, admin=admin)
+
+    email = session["user"]
+    admin = mongo.db.admin.find({"email": session["user"]})
+    return render_template("dashboard.html", email=email, admin=admin)
 
 
 @app.route("/employess/", methods=["GET", "POST"])
@@ -179,10 +185,10 @@ def employess():
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
-    else:
-        # List all employee
-        employess = list(mongo.db.employess.find())
-        return render_template("employess.html", employess=employess)
+
+    # List all employee
+    employess = list(mongo.db.employess.find())
+    return render_template("employess.html", employess=employess)
 
 
 @app.route("/add-employee", methods=["GET", "POST"])
@@ -241,11 +247,10 @@ def logout():
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
-    else:
-        # Remove user from session cookie
-        flash("You have been logged out")
-        session.pop("user")
-        return redirect(url_for("index"))
+    # Remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
