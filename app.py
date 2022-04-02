@@ -5,6 +5,7 @@ import uuid
 from flask import (
     Flask, abort, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
+from flask_mail import Mail
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,6 +14,7 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
+mail = Mail(app)
 
 
 app.secret_key = os.environ.get("SECRET_KEY")
