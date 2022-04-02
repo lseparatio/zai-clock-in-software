@@ -142,7 +142,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
-        msg = Message('Hello from the other side!', recipients = ['consultantaanglia@gmail.com'])
+        msg = Message('Hello from the other side!', recipients = ['admin@zaivlife.com'])
         msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works"
         mail.send(msg)
         return redirect(url_for("dashboard", email=session["user"]))
