@@ -5,7 +5,7 @@ import uuid
 from flask import (
     Flask, abort, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
-from flask_mail import Mail
+from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,10 +16,18 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 mail = Mail(app)
 
-
+# App dinamic config, do not update, use env instead
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+# Mail dinamic config, do not update, use env instead
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS')
+app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 mongo = PyMongo(app)
 
@@ -135,6 +143,9 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
+        msg = Message('Hello from the other side!', recipients = ['consultantaanglia@gmail.com'])
+        msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works"
+        mail.send(msg)
         return redirect(url_for("dashboard", email=session["user"]))
 
     return render_template("register.html")
