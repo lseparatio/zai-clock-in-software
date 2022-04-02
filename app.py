@@ -1,6 +1,7 @@
 import os
 import datetime
 import random
+import uuid
 from flask import (
     Flask, abort, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
@@ -105,6 +106,7 @@ def register():
             {"email": request.form.get("email").lower()})
         existing_phone = mongo.db.admin.find_one(
             {"phone_number": request.form.get("phone_number")})
+        verify_secret = uuid.uuid4()
 
         if existing_user:
             flash("Username already exists")
@@ -123,6 +125,7 @@ def register():
             "last_name": request.form.get("last_name").lower(),
             "email": request.form.get("email").lower(),
             "email_is_verified": False,
+            "verify_secret": str(verify_secret),
             "phone_number": request.form.get("phone_number")
         }
         mongo.db.admin.insert_one(register)
