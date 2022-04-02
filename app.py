@@ -14,7 +14,6 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-mail = Mail(app)
 
 # App dinamic config, do not update, use env instead
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -28,7 +27,7 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS')
 app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
-
+mail = Mail(app)
 mongo = PyMongo(app)
 
 
