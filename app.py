@@ -1,3 +1,4 @@
+from crypt import methods
 import os
 import datetime
 import random
@@ -139,15 +140,38 @@ def register():
         }
         mongo.db.admin.insert_one(register)
 
-        # put the new user into 'session' cookie
-        session["user"] = request.form.get("email").lower()
+        email = request.form.get("email").lower()
         flash("Registration Successful!")
-        msg = Message('Zai Clocking Software. Please confirm your email!', recipients = ['admin@zaivlife.com'])
-        msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works"
+        # Sending verification email
+        msg = Message(
+            'Zai Clocking Software. Please confirm your email!', recipients=[email])
+        msg.html = render_template("email/verify.html", first_name=request.form.get("first_name").capitalize(
+        ), last_name=request.form.get("last_name").capitalize(), email=request.form.get("email").lower(), secret=str(verify_secret))
         mail.send(msg)
-        return redirect(url_for("dashboard", email=session["user"]))
+        return redirect(url_for("verify"))
 
     return render_template("register.html")
+
+
+@app.route("/verify", methods=["GET", "POST"])
+def verify():
+    if request.method == "POST":
+        # check if email exists in db
+        existing_email = mongo.db.admin.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_email["verify_secret"] == request.form.get("secret"):
+            mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
+                                      "$set": {"email_is_verified": True}})
+            mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
+                                      "$unset": {"verify_secret": request.form.get("secret")}})
+            flash("Your email is now verified please Log In")
+            return redirect(url_for("login"))
+
+        flash("Your verification code is wrong, please try again!")
+        return render_template("verify.html")
+
+    return render_template("verify.html")
 
 
 @app.route("/login", methods=["GET", "POST"])

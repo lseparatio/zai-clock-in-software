@@ -1,19 +1,18 @@
-
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {% for user in admin %}
-                    {{ user.first_name.capitalize() }}
-                    {{ user.last_name.capitalize()}}
-                    {{ user.phone_number}}
-                    {%endfor%}
-                </h3>
-            </div>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <h3 class="center-align light-blue-text text-darken-4">
+                {% for user in admin %}
+                {{ user.first_name.capitalize() }}
+                {{ user.last_name.capitalize()}}
+                {{ user.phone_number}}
+                {%endfor%}
+            </h3>
         </div>
     </div>
+</div>
 
 {% endblock %}
