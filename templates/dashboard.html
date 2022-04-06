@@ -6,9 +6,10 @@
         <div class="card-panel">
             <h3 class="center-align light-blue-text text-darken-4">
                 {% for user in admin %}
-                {{ user.first_name.capitalize() }}
+                Wellcome, {{ user.first_name.capitalize() }}
                 {{ user.last_name.capitalize()}}
-                {{ user.phone_number}}
+                <p>This is the main dashboard. Please choose what you want to do next</p>
+
                 {%endfor%}
             </h3>
         </div>

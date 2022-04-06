@@ -11,6 +11,7 @@ body {
     background-size: cover;
     color: var(--text);
     min-height: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
 h3 {
@@ -27,7 +28,7 @@ h3 {
 #clock-number-text,
 #clock-number {
     background-color: var(--buttons);
-    border-radius: 25px; 
+    border-radius: 25px;
     border-bottom: 0px;
 }
 
@@ -38,7 +39,7 @@ h3 {
     color: aliceblue;
 }
 
-.row .col.s3{
+.row .col.s3 {
 
     margin-left: 2vh;
     padding-left: 1vh;
@@ -96,5 +97,38 @@ tr {
 }
 
 .flashes {
-border-radius: 25px;
+    border-radius: 25px;
+}
+
+.font {
+    font-family: 'Poppins', sans-serif;
+}
+
+.registration {
+    background-color: var(--buttons);
+    border-radius: 25px;
+    border: 1px solid white;
+}
+
+#registration {
+    border: 1px solid white;
+}
+
+label[for=username],
+label[for=password],
+label[for=first_name],
+label[for=last_name],
+label[for=email],
+label[for=phone_number] {
+    color: var(--text);
+}
+
+input,
+.input-field .helper-text {
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+hr {
+    background-color: #ffffff;
 }

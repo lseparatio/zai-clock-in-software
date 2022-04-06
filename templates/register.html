@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Register</h3>
+<h3 class="center-align font">Registration</h3>
 
 <div class="row">
     <form class="col s12 m10 offset-m1" method="POST" action="{{ url_for('register') }}">
-        <div class="card-panel">
+        <div class="card-panel registration">
             <!-- username -->
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
                     <input id="username" name="username" type="text" minlength="5" maxlength="20" data-length="20"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                     <label for="username">Username*</label>
-                    <span class="helper-text" data-error="Please use minimum 5 characters" data-success="✔️">Please use
+                    <span class="helper-text font" data-error="Please use minimum 5 characters" data-success="✔️">Please use
                         minimum 5 characters</span>
                 </div>
                 <!-- password -->
                 <div class="input-field col s12 m6">
-                    <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
                     <input id="password" name="password" type="password" minlength="5" maxlength="20" data-length="20"
                         class="validate" required>
                     <label for="password">Password*</label>
@@ -29,7 +27,6 @@
             <!--First Name-->
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
                     <input id="first_name" name="first_name" type="text" minlength="1" maxlength="20" data-length="20"
                         pattern="^[a-zA-Z]{1,20}$" class="validate" required>
                     <label for="first_name">First Name*</label>
@@ -38,7 +35,6 @@
                 </div>
                 <!-- Last Name -->
                 <div class="input-field col s12 m6">
-                    <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
                     <input id="last_name" name="last_name" type="text" minlength="1" maxlength="20" data-length="20"
                         pattern="^[a-zA-Z]{1,20}$" class="validate" required>
                     <label for="last_name">Last Name*</label>
@@ -50,7 +46,6 @@
             <div class="row">
                 <!-- Email -->
                 <div class="input-field col s12 m6">
-                    <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email*</label>
                     <span class="helper-text" data-error="Please enter your email address" data-success="✔️">Please
@@ -58,7 +53,6 @@
                 </div>
                 <!--Phone Number-->
                 <div class="input-field col s12 m6">
-                    <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
                     <input id="phone_number" name="phone_number" pattern="^[0-9]{11,14}$" type="tel" minlength="11"
                         maxlength="14" data-length="14" class="validate" required>
                     <label for="phone_number">Phone Number*</label>
@@ -68,8 +62,8 @@
             </div>
             <!-- register -->
             <div class="row">
-                <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                    Register <i class="fas fa-sign-in-alt"></i>
+                <button id="registration" type="submit" class="col s12 btn-large  blue darken-4 text-shadow">
+                    Register
                 </button>
             </div>
         </div>
