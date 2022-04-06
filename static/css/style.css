@@ -20,8 +20,9 @@ h3 {
 
 #time {
     background-color: var(--buttons);
-    border-radius: 25px;
+    border-radius: 10px;
     text-align: center;
+    border: 1px solid white;
 }
 
 
@@ -79,6 +80,7 @@ tr {
     background-color: var(--buttons);
     font-size: x-large;
     font-family: 'Poppins', sans-serif;
+    border: 1px solid white;
 }
 
 .click-nr:hover,
@@ -97,7 +99,8 @@ tr {
 }
 
 .flashes {
-    border-radius: 25px;
+    border-radius: 10px;
+    border: 1px solid white;
 }
 
 .font {
@@ -129,6 +132,12 @@ input,
     font-family: 'Poppins', sans-serif;
 }
 
-hr {
-    background-color: #ffffff;
+.login {
+    background-color: var(--buttons);
+    border-radius: 25px;
+    border: 1px solid white;
+}
+
+#login-button {
+    border: 1px solid white;
 }
