@@ -107,22 +107,29 @@ tr {
     font-family: 'Poppins', sans-serif;
 }
 
-.registration {
+.registration,
+.login,
+.verify {
     background-color: var(--buttons);
     border-radius: 25px;
     border: 1px solid white;
 }
 
-#registration {
+#registration-button,
+#login-button,
+#verify-button,
+#resend-button {
     border: 1px solid white;
 }
+
 
 label[for=username],
 label[for=password],
 label[for=first_name],
 label[for=last_name],
 label[for=email],
-label[for=phone_number] {
+label[for=phone_number],
+label[for=secret] {
     color: var(--text);
 }
 
@@ -130,14 +137,4 @@ input,
 .input-field .helper-text {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-}
-
-.login {
-    background-color: var(--buttons);
-    border-radius: 25px;
-    border: 1px solid white;
-}
-
-#login-button {
-    border: 1px solid white;
 }

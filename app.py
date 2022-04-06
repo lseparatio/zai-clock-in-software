@@ -160,7 +160,11 @@ def verify():
         existing_email = mongo.db.admin.find_one(
             {"email": request.form.get("email").lower()})
 
-        if existing_email["verify_secret"] == request.form.get("secret"):
+        if not existing_email and existing_email["verify_secret"]:
+            flash("Your verification code is wrong, please try again!")
+            return redirect(url_for("verify"))
+
+        elif existing_email["verify_secret"] == request.form.get("secret"):
             mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
                                       "$set": {"email_is_verified": True}})
             mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
@@ -174,6 +178,29 @@ def verify():
     return render_template("verify.html")
 
 
+@app.route("/resend-verification", methods=["GET", "POST"])
+def resend_verification():
+    if request.method == "POST":
+        existing_email = mongo.db.admin.find_one(
+            {"email": request.form.get("email").lower()})
+        email = request.form.get("email").lower()
+
+        if not existing_email:
+            flash("Please double check your email address!")
+            return redirect(url_for("resend_verification"))
+        elif existing_email:
+            # Sending verification email
+            msg = Message(
+                'Zai Clocking Software. Please confirm your email!', recipients=[email])
+            msg.html = render_template(
+                "email/verify.html", first_name=existing_email["first_name"].capitalize(), last_name=existing_email["last_name"].capitalize(), email=existing_email["email"], secret=existing_email["verify_secret"])
+            mail.send(msg)
+            flash("Your verification secret code was sent to email.")
+            return redirect(url_for("verify"))
+
+    return render_template("resend-verification.html")
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -181,14 +208,14 @@ def login():
         existing_user = mongo.db.admin.find_one(
             {"email": request.form.get("email").lower()})
 
-        if not (existing_user["email_is_verified"]):
-            # Check id email is verified
-            flash(
-                "You need to verify your email address please check your email for instructions")
-
-        elif existing_user:
+        if existing_user:
+            if not (existing_user["email_is_verified"]):
+                # Check id email is verified
+                flash(
+                    "You need to verify your email address please check your email for instructions")
+                return redirect(url_for("verify"))
             # ensure hashed password matches user input
-            if check_password_hash(
+            elif check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("email").lower()
                 flash("Welcome, {}".format(
