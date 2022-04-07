@@ -108,6 +108,7 @@ tr {
 }
 
 .registration,
+.add-employee,
 .login,
 .verify {
     background-color: var(--buttons);
@@ -118,7 +119,8 @@ tr {
 #registration-button,
 #login-button,
 #verify-button,
-#resend-button {
+#resend-button,
+#register-employee {
     border: 1px solid white;
 }
 
@@ -129,7 +131,13 @@ label[for=first_name],
 label[for=last_name],
 label[for=email],
 label[for=phone_number],
-label[for=secret] {
+label[for=secret],
+label[for=departament],
+label[for=clock-in-number],
+label[for=start-date],
+label[for=start-time],
+label[for=end-date],
+label[for=end-time] {
     color: var(--text);
 }
 
@@ -137,4 +145,11 @@ input,
 .input-field .helper-text {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
+}
+
+.employee-table {
+    background-color: var(--buttons);
+    border: 1px solid white;
+
+
 }

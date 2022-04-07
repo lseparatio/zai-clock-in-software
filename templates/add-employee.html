@@ -5,7 +5,7 @@
     <div class="row">
         <form class="col s10 m10 offset-m1" method="POST"
             action="{{ url_for('add_employee' , username=session['user']) }}">
-            <div class="card-panel">
+            <div class="card-panel add-employee">
 
                 <!--First Name-->
                 <div class="row">
@@ -98,7 +98,7 @@
                     <div class="input-field col s12 m6">
                         <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
                         <input id="end-date" name="end-date" type="date" class="validate">
-                        <label for="password">End Date</label>
+                        <label for="end-date">End Date</label>
                         <span class="helper-text" data-error="Please select end date" data-success="✔️">Please
                             select end date</span>
                     </div>
@@ -116,8 +116,8 @@
 
                 <!-- register -->
                 <div class="row">
-                    <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
+                    <button id="register-employee" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+                        Register Employee<i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
