@@ -141,7 +141,7 @@ def register():
         mongo.db.admin.insert_one(register)
 
         email = request.form.get("email").lower()
-        flash("Registration Successful!")
+        flash("Registration Successful! Please check your email for secret key!")
         # Sending verification email
         msg = Message(
             'Zai Clocking Software. Please confirm your email!', recipients=[email])
@@ -156,15 +156,18 @@ def register():
 @app.route("/verify", methods=["GET", "POST"])
 def verify():
     if request.method == "POST":
-        # check if email exists in db
+        # Check if email exists in db
         existing_email = mongo.db.admin.find_one(
             {"email": request.form.get("email").lower()})
-
-        if not existing_email and existing_email["verify_secret"]:
+        try:
+            # Check if key exist in db
+            existing_email_secret = existing_email["verify_secret"]
+        except:
             flash("Your verification code is wrong, please try again!")
             return redirect(url_for("verify"))
 
-        elif existing_email["verify_secret"] == request.form.get("secret"):
+        if existing_email_secret == request.form.get("secret"):
+            # Check if key match
             mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
                                       "$set": {"email_is_verified": True}})
             mongo.db.admin.update_one({"email": request.form.get("email").lower()}, {
