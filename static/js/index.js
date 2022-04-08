@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (clockNumberDiv.value.length <= 3) {
                 clockNumberDiv.value += clockNumber;
             }
-        }
-        );
+        });
     }
 
     function currentTime() {

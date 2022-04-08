@@ -9,8 +9,7 @@
 
 
     <div class="row">
-        <form id="clock-in-form" class="col s9 offset-s2 offset-m2"
-            method="POST" action="{{ url_for('index') }}">
+        <form id="clock-in-form" class="col s9 offset-s2 offset-m2" method="POST" action="{{ url_for('index') }}">
 
             <div class="row">
                 <div class="col s12 m7 offset-m2  centred">
@@ -20,37 +19,29 @@
             </div>
 
             <div class="row">
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="1"
-                    rel="nofollow">1</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="2"
-                    rel="nofollow">2</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="3"
-                    rel="nofollow">3</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">1</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">2</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">3</p>
             </div>
 
             <div class="row">
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="4"
-                    rel="nofollow">4</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="5"
-                    rel="nofollow">5</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="6"
-                    rel="nofollow">6</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">4</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">5</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">6</p>
             </div>
 
             <div class="row">
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="7"
-                    rel="nofollow">7</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="8"
-                    rel="nofollow">8</p>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="9"
-                    rel="nofollow">9</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">7</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">8</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">9</p>
             </div>
 
             <div class="row">
-                <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}"><i class="material-icons">close</i></a>
-                <p class="click-nr waves-effect waves-light btn-large col s3" value="0"
-                    rel="nofollow">0</p>
-                <button type="submit" class="submit waves-effect waves-light btn-large col s3"><i class="material-icons">send</i></button>
+                <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}"><i
+                        class="material-icons">close</i></a>
+                <p class="click-nr waves-effect waves-light btn-large col s3" rel="nofollow">0</p>
+                <button type="submit" class="submit waves-effect waves-light btn-large col s3"><i
+                        class="material-icons">send</i></button>
             </div>
         </form>
     </div>
@@ -59,16 +50,18 @@
 
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large red">
-      <i class="large material-icons">settings</i>
+        <i class="large material-icons">settings</i>
     </a>
     <ul>
-      <li><a href="{{ url_for('register') }}" class="btn-floating red"><i class="material-icons">supervisor_account</i></a></li>
-      <li><a href="{{ url_for('login') }}" class="btn-floating yellow darken-1"><i class="material-icons">account_circle</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">school</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">local_library</i></a></li>
+        <li><a href="{{ url_for('register') }}" class="btn-floating red"><i
+                    class="material-icons">supervisor_account</i></a></li>
+        <li><a href="{{ url_for('login') }}" class="btn-floating yellow darken-1"><i
+                    class="material-icons">account_circle</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">school</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">local_library</i></a></li>
     </ul>
-  </div>
-        
+</div>
+
 
 
 {% endblock %}
