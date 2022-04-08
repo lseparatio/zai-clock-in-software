@@ -3,19 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
     This function is only to show date and time on front page
     */
     currentTime();
-    let buttons = document.getElementsByClassName("click-nr");
 
 
-    for (let button of buttons) {
-        button.addEventListener("click", function () {
-            if (this.getAttribute("data-type") === "delete") {
-                document.location.reload(true);
-            } else {
-                let clockNumber = this.getAttribute("data-type");
-                let clockNumberDiv = document.getElementById("clock-number");
-                clockNumberDiv.value += clockNumber;
-            }
-        });
+    let keypad = document.getElementsByClassName("click-nr");
+
+    for (let key of keypad) {
+        key.addEventListener("click", function () {
+
+            let clockNumber = key.innerText;
+            let clockNumberDiv = document.getElementById("clock-number");
+            clockNumberDiv.value += clockNumber;
+        }
+        );
     }
 
     function currentTime() {
@@ -39,63 +38,64 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () { currentTime(); }, 1000);
         document.getElementById("time").innerHTML = `Time: ${time} Date: ${currentDate}`;
     }
-});
 
-if ('NDEFReader' in window) {
-    /*
-    This function is checking if NDEF is on
-    because at this time NFC in browser is 
-    suported by Chrome on Android and webview
-    only. If is on then we scan for NFC tags
-    and decode and send the information in clock
-    number input field.
-    */
-    navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
-        if (nfcStatus.state === "granted") {
-            startScanning();
-        } else {
-            document.querySelector("#scan").onclick = event => {
-                startScanning();
-            };
-        }
-    });
 
-    function startScanning() {
-        /* 
-        Change placeholder to 
-        confirm NFC is ready and working.
+    if ('NDEFReader' in window) {
+        /*
+        This function is checking if NDEF is on
+        because at this time NFC in browser is 
+        suported by Chrome on Android and webview
+        only. If is on then we scan for NFC tags
+        and decode and send the information in clock
+        number input field.
         */
-        document.getElementById("clock-number").placeholder = "NFC READY";
-        const ndef = new NDEFReader();
-        ndef.scan().then(() => {
-            ndef.onreadingerror = () => {
-            };
-            ndef.onreading = event => {
-                const message = event.message;
-                for (const record of message.records) {
-                    if (record.recordType == "text") {
-                        const textDecoder = new TextDecoder(record.encoding);
-                        document.getElementById("clock-number").value = textDecoder.decode(record.data);
-                    }
-                }
-            };
-        }).catch(error => {
-            console.log(`Error! Scan failed to start: ${error}.`);
+        navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
+            if (nfcStatus.state === "granted") {
+                startScanning();
+            } else {
+                document.querySelector("#scan").onclick = event => {
+                    startScanning();
+                };
+            }
         });
-    }
-}
 
-function autoSend() {
-    /*
-    This function is auto sending the form
-    when are 4 caracters in form.
-    */
-    let value = document.getElementById("clock-number");
-    if (value.value.length != 4) {
-        console.log(value.value.length);
-    } else {
-        document.getElementById("clock-in-form").submit();
+        function startScanning() {
+            /* 
+            Change placeholder to 
+            confirm NFC is ready and working.
+            */
+            document.getElementById("clock-number").placeholder = "NFC READY";
+            const ndef = new NDEFReader();
+            ndef.scan().then(() => {
+                ndef.onreadingerror = () => {
+                };
+                ndef.onreading = event => {
+                    const message = event.message;
+                    for (const record of message.records) {
+                        if (record.recordType == "text") {
+                            const textDecoder = new TextDecoder(record.encoding);
+                            document.getElementById("clock-number").value = textDecoder.decode(record.data);
+                        }
+                    }
+                };
+            }).catch(error => {
+                console.log(`Error! Scan failed to start: ${error}.`);
+            });
+        }
     }
-    setTimeout(function () { autoSend(); }, 1000);
-}
-autoSend();
+
+    function autoSend() {
+        /*
+        This function is auto sending the form
+        when are 4 caracters in form.
+        */
+        let text = document.getElementById("clock-number").value;
+        if (text.length != 4) {
+            console.log(text);
+        } else {
+            document.getElementById("clock-in-form").submit();
+        }
+        setTimeout(function () { autoSend(); }, 1000);
+    }
+    autoSend();
+});

@@ -9,7 +9,7 @@
 
 
     <div class="row">
-        <form id="clock-in-form" maxlength="4" data-length="4" pattern="^[0-9]{4,4}$" class="col s9 offset-s2 offset-m2"
+        <form id="clock-in-form" class="col s9 offset-s2 offset-m2"
             method="POST" action="{{ url_for('index') }}">
 
             <div class="row">
@@ -20,36 +20,36 @@
             </div>
 
             <div class="row">
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="1" value="1"
-                    rel="nofollow">1</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="2" value="2"
-                    rel="nofollow">2</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="3" value="3"
-                    rel="nofollow">3</a>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="1"
+                    rel="nofollow">1</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="2"
+                    rel="nofollow">2</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="3"
+                    rel="nofollow">3</p>
             </div>
 
             <div class="row">
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="4" value="4"
-                    rel="nofollow">4</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="5" value="5"
-                    rel="nofollow">5</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="6" value="6"
-                    rel="nofollow">6</a>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="4"
+                    rel="nofollow">4</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="5"
+                    rel="nofollow">5</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="6"
+                    rel="nofollow">6</p>
             </div>
 
             <div class="row">
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="7" value="7"
-                    rel="nofollow">7</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="8" value="8"
-                    rel="nofollow">8</a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="9" value="9"
-                    rel="nofollow">9</a>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="7"
+                    rel="nofollow">7</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="8"
+                    rel="nofollow">8</p>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="9"
+                    rel="nofollow">9</p>
             </div>
 
             <div class="row">
                 <a class="delete waves-effect waves-light btn-large col s3" href="{{ url_for('index') }}"><i class="material-icons">close</i></a>
-                <a class="click-nr waves-effect waves-light btn-large col s3" data-type="0" value="0"
-                    rel="nofollow">0</a>
+                <p class="click-nr waves-effect waves-light btn-large col s3" value="0"
+                    rel="nofollow">0</p>
                 <button type="submit" class="submit waves-effect waves-light btn-large col s3"><i class="material-icons">send</i></button>
             </div>
         </form>

@@ -81,6 +81,7 @@ tr {
     font-size: x-large;
     font-family: 'Poppins', sans-serif;
     border: 1px solid white;
+    margin-top: 0px;
 }
 
 .click-nr:hover,
