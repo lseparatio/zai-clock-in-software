@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let key of keypad) {
         key.addEventListener("click", function () {
-
             let clockNumber = key.innerText;
             let clockNumberDiv = document.getElementById("clock-number");
             clockNumberDiv.value += clockNumber;

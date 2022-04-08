@@ -61,7 +61,7 @@
         {% endblock %}
     </main>
 
-    <section>
+    <div>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -74,7 +74,7 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-    </section>
+    </div>
 
     <!--Scripts-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
