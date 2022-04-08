@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         key.addEventListener("click", function () {
             let clockNumber = key.innerText;
             let clockNumberDiv = document.getElementById("clock-number");
-            clockNumberDiv.value += clockNumber;
+            if (clockNumberDiv.value.length <= 3) {
+                clockNumberDiv.value += clockNumber;
+            }
         }
         );
     }
