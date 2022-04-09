@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function currentTime() {
+        /*
+         This is only to show time and
+         date on index page.
+        */
         let date = new Date();
         let hh = date.getHours();
         let mm = date.getMinutes();

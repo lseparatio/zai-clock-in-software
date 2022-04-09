@@ -4,7 +4,7 @@ import datetime
 import random
 import uuid
 from flask import (
-    Flask, abort, flash, render_template,
+    Flask, Markup, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
 from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
@@ -257,6 +257,17 @@ def employess():
 
     # List all employee
     employess = list(mongo.db.employess.find())
+    return render_template("employess.html", employess=employess)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    employess = list(mongo.db.employess.find({"$text": {"$search": query}}))
+    if employess == []:
+        flash("No employee found. Please check again your search parameter")
+        return render_template("employess.html", employess=employess)
+    print(employess)
     return render_template("employess.html", employess=employess)
 
 
