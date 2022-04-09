@@ -47,7 +47,7 @@
             <td>{{ employee.end_date }}</td>
             <td>{{ employee.end_time }}</td>
             <td>{{ employee.registered_by }}</td>
-            <td><a href="{{ employee.clock_nr }}">Edit</a></td>
+            <td><a href="{{ url_for('edit_employee', clock_number= employee.clock_nr) }}">Edit</a></td>
         </tr>
     </tbody>
     {%endfor%}

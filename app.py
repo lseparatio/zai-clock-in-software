@@ -326,10 +326,33 @@ def add_employee():
                         "end_time": request.form.get("end-time"),
                         "registered_by": session["user"]
                     }
+
                     # Add new employee to database.
                     mongo.db.employess.insert_one(add_employee)
                     flash("Employee registered successfully")
         return render_template("add-employee.html", clock_nr=rondom_clock_nr)
+
+
+@app.route("/edit_employee/<clock_number>", methods=["GET", "POST"])
+def edit_employee(clock_number):
+    employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
+    if request.method == "POST":
+        mongo.db.employess.update_one({"clock_nr": int(clock_number)}, {"$set":
+                                                                        {"first_name": request.form.get("first_name").lower(),
+                                                                         "last_name": request.form.get("last_name").lower(),
+                                                                         "email": request.form.get("email").lower(),
+                                                                         "phone_number": request.form.get("phone_number"),
+                                                                         "departament": request.form.get("departament").lower(),
+                                                                         "clock_nr": int(request.form.get("clock-in-number")),
+                                                                         "start_date": request.form.get("start-date"),
+                                                                         "start_time": request.form.get("start-time"),
+                                                                         "end_date": request.form.get("end-date"),
+                                                                         "end_time": request.form.get("end-time"),
+                                                                         "registered_by": employess["registered_by"],
+                                                                         "last_updated_by": session["user"]}})
+        flash("Employee Successfully Updated")
+
+    return render_template("edit-employee.html", employess=employess)
 
 
 @app.route("/logout")
