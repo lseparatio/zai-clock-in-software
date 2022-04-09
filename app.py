@@ -262,13 +262,25 @@ def employess():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")
-    employess = list(mongo.db.employess.find({"$text": {"$search": query}}))
-    if employess == []:
-        flash("No employee found. Please check again your search parameter")
-        return render_template("employess.html", employess=employess)
-    print(employess)
-    return render_template("employess.html", employess=employess)
+    try:
+        # Managing direct link access
+        query = request.form.get("query")
+        employess = list(mongo.db.employess.find(
+            {"$text": {"$search": query}}))
+        if 'user' not in session:
+            # Check if is authenticated
+            flash("You need to be authenticated to access this page!")
+            return redirect(url_for("login"))
+
+        else:
+            if employess == []:
+                flash("No employee found. Please check again your search parameter")
+                return render_template("employess.html", employess=employess)
+
+            return render_template("employess.html", employess=employess)
+    except:
+        flash("Something wrong happen please try again")
+        return redirect(url_for("employess"))
 
 
 @app.route("/add-employee", methods=["GET", "POST"])
