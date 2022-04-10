@@ -157,6 +157,28 @@ input,
 .employee-table {
     background-color: var(--buttons);
     border: 1px solid white;
+}
 
+.modal {
+    background-color: var(--buttons);
+    border: 1px solid white;
+}
 
+.modal .modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #311b92;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%;
+    text-align: right;
+}
+
+[type="checkbox"]+span:not(.lever):before,
+[type="checkbox"]:not(.filled-in)+span:not(.lever):after {
+    border: 2px solid white;
+}
+
+label {
+    color: #fafafa;
+    font-family: 'Poppins', sans-serif;
 }

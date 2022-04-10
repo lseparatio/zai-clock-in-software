@@ -130,12 +130,64 @@
                         class="col s12 m6 btn-large light-blue darken-4 text-shadow">
                         Update Employee
                     </button>
-                    <button id="register-employee" type="" class="col s12 m6 btn-large  red darken-4 text-shadow">
+                    <a class="col s12 m6 btn btn-large  red darken-4 text-shadow modal-trigger"
+                        href="#delete-employee-modal">
                         Delete Employee
-                    </button>
+                    </a>
                 </div>
             </div>
         </form>
+
+        <div id="delete-employee-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 id="delete-employee-header" class="center-align">Delete an empoyee record!</h4>
+                <h5 id="delete-employee-header" class="center-align red">This is irreversible</h5>
+                <div class="row">
+                    <form class="col s12 m8 offset-m2" method="POST"
+                        action="{{ url_for('delete_employee', clock_number= employess.clock_nr) }}">
+                        <div class="card-panel verify">
+                            <!-- confirmations -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" required />
+                                            <span>I understand that all the records of the employee will be
+                                                deleted!</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" required />
+                                            <span>I understand that this is irreversible</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Clock Number -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="clock-number-v" name="clock-number-v" type="text" class="validate"
+                                        required>
+                                    <label for="clock-number-v">Employee clock in number</label>
+                                </div>
+                            </div>
+                            <!-- Delete Employee -->
+                            <div class="row">
+                                <button id="verify-button" type="submit"
+                                    class="col s12 btn-large red accent-3 darken-4 text-shadow font">
+                                    Delete employee
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer row">
+                <a href="#!"
+                    class=" col s12 modal-close waves-effect waves-green btn-large centre-align green font">Cancel</a>
+            </div>
+        </div>
     </div>
 
     {%endblock%}

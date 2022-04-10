@@ -63,7 +63,7 @@ def index():
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
-            #Insert in clocked_out
+            # Insert in clocked_out
             mongo.db.clocked_out.insert_one(clock_out)
             # Mark clock nr for deletion
             clocks = {
@@ -336,7 +336,11 @@ def add_employee():
 @app.route("/edit_employee/<clock_number>", methods=["GET", "POST"])
 def edit_employee(clock_number):
     employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
-    if request.method == "POST":
+    # Check if autentificated
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+    elif request.method == "POST":
         mongo.db.employess.update_one({"clock_nr": int(clock_number)}, {"$set":
                                                                         {"first_name": request.form.get("first_name").lower(),
                                                                          "last_name": request.form.get("last_name").lower(),
@@ -352,10 +356,30 @@ def edit_employee(clock_number):
                                                                          "last_updated_by": session["user"]}})
         flash("Employee Successfully Updated")
 
-    return render_template("edit-employee.html", employess=employess)
+    else:
+        return render_template("edit-employee.html", employess=employess)
 
 
-@app.route("/logout")
+@app.route("/delete/<clock_number>", methods=["GET", "POST"])
+def delete_employee(clock_number):
+    employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
+    # Check if autentificated
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+    else:
+        if request.method == "POST":
+            clock_nr_v = request.form.get("clock-number-v")
+            if clock_number == clock_nr_v:
+                mongo.db.employess.delete_one({"clock_nr": int(clock_nr_v)})
+                flash("Employee was successfully deleted!")
+                return redirect(url_for("employess"))
+
+            flash("Confirmation Clock in Number is Wrong, Please try Again!")
+            return render_template("edit-employee.html", employess=employess)
+
+
+@ app.route("/logout")
 def logout():
     if 'user' not in session:
         # Preventing error page if direct link acces. Redirecting to login.

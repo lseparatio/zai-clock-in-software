@@ -9,7 +9,6 @@
             <!-- email -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
@@ -17,7 +16,6 @@
             <!-- secret code -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
                     <input id="secret" name="secret" type="text" class="validate" required>
                     <label for="secret">Secret Received In Email</label>
                 </div>
@@ -25,11 +23,12 @@
             <!-- Verify -->
             <div class="row">
                 <button id="verify-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                    Verify <i class="fas fa-sign-in-alt"></i>
+                    Verify
                 </button>
             </div>
             <div class="row">
-                <a id="resend-button" href="{{ url_for('resend_verification') }}" class="col s12 btn-large light-blue darken-4 text-shadow">
+                <a id="resend-button" href="{{ url_for('resend_verification') }}"
+                    class="col s12 btn-large light-blue darken-4 text-shadow">
                     Lost Your Secret Code? Request Again!
                 </a>
             </div>
