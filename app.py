@@ -356,7 +356,7 @@ def edit_employee(clock_number):
                                                                          "registered_by": employess["registered_by"],
                                                                          "last_updated_by": session["user"]}})
         flash("Employee Successfully Updated")
-        return redirect(url_for("edit_employee" , clock_number=clock_number))
+        return redirect(url_for("edit_employee", clock_number=clock_number))
 
     else:
         return render_template("edit-employee.html", employess=employess)
@@ -379,6 +379,12 @@ def delete_employee(clock_number):
 
             flash("Confirmation Clock in Number is Wrong, Please try Again!")
             return render_template("edit-employee.html", employess=employess)
+
+
+@app.route("/settings/", methods=["GET", "POST"])
+def settings():
+
+    return render_template("settings.html")
 
 
 @ app.route("/logout")
