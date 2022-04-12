@@ -41,13 +41,14 @@ def page_not_found(e):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        ip_address = request.remote_addr
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
-            {"clock_in_nr": request.form.get("clock-number")})
+            {"clock_in_nr": int(request.form.get("clock-number"))})
         are_out = mongo.db.clocked_out.find_one(
             {"clock_in_nr": request.form.get("clock-number")})
         employee = mongo.db.employess.find_one(
-            {"clock_nr": request.form.get("clock-number")})
+            {"clock_nr": int(request.form.get("clock-number"))})
 
         if not employee:
             # Check if clock in number exist in employees
@@ -59,7 +60,7 @@ def index():
             flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
                                                                        ) + ", " + "you was clock out successfully!")
             clock_out = {
-                "clock_in_nr": request.form.get("clock-number"),
+                "clock_in_nr": int(request.form.get("clock-number")),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
@@ -69,7 +70,7 @@ def index():
             clocks = {
                 "first_name": employee["first_name"],
                 "last_name": employee["last_name"],
-                "clock_nr": request.form.get("clock-number"),
+                "clock_nr": int(request.form.get("clock-number")),
                 "date_in": are_in["date"],
                 "time_in": are_in["time"],
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
@@ -77,7 +78,7 @@ def index():
             }
             mongo.db.clocks.insert_one(clocks)
             clock_in = {
-                "clock_in_nr": request.form.get("clock-number")
+                "clock_in_nr": int(request.form.get("clock-number"))
             }
             # Delete from clocked_in
             mongo.db.clocked_in.delete_one(clock_in)
@@ -87,13 +88,13 @@ def index():
             flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
                                                                        ) + ", " + "you was clock in successfully!")
             clock_in = {
-                "clock_in_nr": request.form.get("clock-number"),
+                "clock_in_nr": int(request.form.get("clock-number")),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
             mongo.db.clocked_in.insert_one(clock_in)
             clock_out = {
-                "clock_in_nr": request.form.get("clock-number")
+                "clock_in_nr": int(request.form.get("clock-number"))
             }
             mongo.db.clocked_out.delete_one(clock_out)
 
@@ -355,6 +356,7 @@ def edit_employee(clock_number):
                                                                          "registered_by": employess["registered_by"],
                                                                          "last_updated_by": session["user"]}})
         flash("Employee Successfully Updated")
+        return redirect(url_for("edit_employee" , clock_number=clock_number))
 
     else:
         return render_template("edit-employee.html", employess=employess)
