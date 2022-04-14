@@ -26,7 +26,7 @@
                                 </button>
                             </div>
                             <div class="input-field col s2">
-                                <button id="verify-button" type="submit"
+                                <button id="reset-button" form="brand-default" type="submit"
                                     class=" s3 btn-large green darken-4 text-shadow">
                                     Reset
                                 </button>
@@ -34,7 +34,9 @@
                         </div>
                     </div>
                 </form>
-
+                <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
+                    <input type="hidden" id="brand-name" name="brand-name" value="Zai Clock-In Software">
+                </form>
             </div>
         </li>
         <li>
