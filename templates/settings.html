@@ -2,14 +2,40 @@
 {% block content %}
 <div class="centred container offset-m1 index-container">
 
-    <h2>If you like to customize clock page to fit your brilliant business you are in right place!</h2>
+    <h2 class="center-align font">If you like to customize clock page to fit your brilliant business you are in right
+        place!</h2>
 
 
 
-    <ul class="collapsible">
+    <ul class="collapsible blue">
         <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-header blue"><i class="material-icons">filter_drama</i>NavBar</div>
+            <div class="collapsible-body">
+                <form class="col s6 offset-m2" method="POST" action="{{ url_for('settings') }}">
+                    <div class=" ">
+                        <!-- secret code -->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="brand-name" name="brand-name" type="text" class="validate" required>
+                                <label for="brand-name">Enter Your Brand Name</label>
+                            </div>
+                            <div class="input-field col s2">
+                                <button id="verify-button" type="submit"
+                                    class=" s3 btn-large green darken-4 text-shadow">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="input-field col s2">
+                                <button id="verify-button" type="submit"
+                                    class=" s3 btn-large green darken-4 text-shadow">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">place</i>Second</div>

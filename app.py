@@ -2,6 +2,7 @@ from crypt import methods
 import os
 import datetime
 import random
+import re
 import uuid
 from flask import (
     Flask, Markup, flash, render_template,
@@ -34,26 +35,25 @@ mongo = PyMongo(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
+    settings = list(mongo.db.index_template.find())
     # note that we set the 404 status explicitly
-    return render_template('404.html'), 404
+    return render_template('404.html', settings=settings), 404
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    settings = list(mongo.db.index_template.find())
     if request.method == "POST":
-        ip_address = request.remote_addr
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
             {"clock_in_nr": int(request.form.get("clock-number"))})
-        are_out = mongo.db.clocked_out.find_one(
-            {"clock_in_nr": request.form.get("clock-number")})
         employee = mongo.db.employess.find_one(
             {"clock_nr": int(request.form.get("clock-number"))})
 
         if not employee:
             # Check if clock in number exist in employees
             flash("Your clock number is wrong")
-            return render_template("index.html")
+            return render_template("index.html", settings=settings)
 
         elif are_in:
             # Clock out if is clock in already
@@ -98,7 +98,7 @@ def index():
             }
             mongo.db.clocked_out.delete_one(clock_out)
 
-    return render_template("index.html")
+    return render_template("index.html", settings=settings)
 
 
 @app.route('/favicon.ico')
@@ -109,6 +109,7 @@ def favicon():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    settings = list(mongo.db.index_template.find())
     if request.method == "POST":
         # check if username or email already exists in db
         existing_user = mongo.db.admin.find_one(
@@ -151,11 +152,12 @@ def register():
         mail.send(msg)
         return redirect(url_for("verify"))
 
-    return render_template("register.html")
+    return render_template("register.html", settings=settings)
 
 
 @app.route("/verify", methods=["GET", "POST"])
 def verify():
+    settings = list(mongo.db.index_template.find())
     if request.method == "POST":
         # Check if email exists in db
         existing_email = mongo.db.admin.find_one(
@@ -177,13 +179,14 @@ def verify():
             return redirect(url_for("login"))
 
         flash("Your verification code is wrong, please try again!")
-        return render_template("verify.html")
+        return render_template("verify.html", settings=settings)
 
-    return render_template("verify.html")
+    return render_template("verify.html", settings=settings)
 
 
 @app.route("/resend-verification", methods=["GET", "POST"])
 def resend_verification():
+    settings = list(mongo.db.index_template.find())
     if request.method == "POST":
         existing_email = mongo.db.admin.find_one(
             {"email": request.form.get("email").lower()})
@@ -202,11 +205,12 @@ def resend_verification():
             flash("Your verification secret code was sent to email.")
             return redirect(url_for("verify"))
 
-    return render_template("resend-verification.html")
+    return render_template("resend-verification.html", settings=settings)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    settings = list(mongo.db.index_template.find())
     if request.method == "POST":
         # check if email exists in db
         existing_user = mongo.db.admin.find_one(
@@ -236,33 +240,36 @@ def login():
             flash("Incorrect Email and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", settings=settings)
 
 
 @app.route("/dashboard/", methods=["GET", "POST"])
 def dashboard():
+    settings = list(mongo.db.index_template.find())
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
     email = session["user"]
     admin = mongo.db.admin.find({"email": session["user"]})
-    return render_template("dashboard.html", email=email, admin=admin)
+    return render_template("dashboard.html", email=email, admin=admin, settings=settings)
 
 
 @app.route("/employess/", methods=["GET", "POST"])
 def employess():
+    settings = list(mongo.db.index_template.find())
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
 
     # List all employee
     employess = list(mongo.db.employess.find())
-    return render_template("employess.html", employess=employess)
+    return render_template("employess.html", employess=employess, settings=settings)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    settings = list(mongo.db.index_template.find())
     try:
         # Managing direct link access
         query = request.form.get("query")
@@ -276,9 +283,9 @@ def search():
         else:
             if employess == []:
                 flash("No employee found. Please check again your search parameter")
-                return render_template("employess.html", employess=employess)
+                return render_template("employess.html", employess=employess, settings=settings)
 
-            return render_template("employess.html", employess=employess)
+            return render_template("employess.html", employess=employess, settings=settings)
     except:
         flash("Something wrong happen please try again")
         return redirect(url_for("employess"))
@@ -286,6 +293,7 @@ def search():
 
 @app.route("/add-employee", methods=["GET", "POST"])
 def add_employee():
+    settings = list(mongo.db.index_template.find())
     # Check if autentificated
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
@@ -310,7 +318,7 @@ def add_employee():
                 if first_name and last_name:
                     flash(
                         "This persone is already in database please check list of employess")
-                    return render_template("add-employee.html")
+                    return render_template("add-employee.html", settings=settings)
 
                 else:
 
@@ -331,11 +339,12 @@ def add_employee():
                     # Add new employee to database.
                     mongo.db.employess.insert_one(add_employee)
                     flash("Employee registered successfully")
-        return render_template("add-employee.html", clock_nr=rondom_clock_nr)
+        return render_template("add-employee.html", clock_nr=rondom_clock_nr, settings=settings)
 
 
 @app.route("/edit_employee/<clock_number>", methods=["GET", "POST"])
 def edit_employee(clock_number):
+    settings = list(mongo.db.index_template.find())
     employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
     # Check if autentificated
     if 'user' not in session:
@@ -359,11 +368,12 @@ def edit_employee(clock_number):
         return redirect(url_for("edit_employee", clock_number=clock_number))
 
     else:
-        return render_template("edit-employee.html", employess=employess)
+        return render_template("edit-employee.html", employess=employess, settings=settings)
 
 
 @app.route("/delete/<clock_number>", methods=["GET", "POST"])
 def delete_employee(clock_number):
+    settings = list(mongo.db.index_template.find())
     employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
     # Check if autentificated
     if 'user' not in session:
@@ -378,13 +388,19 @@ def delete_employee(clock_number):
                 return redirect(url_for("employess"))
 
             flash("Confirmation Clock in Number is Wrong, Please try Again!")
-            return render_template("edit-employee.html", employess=employess)
+            return render_template("edit-employee.html", employess=employess, settings=settings)
 
 
 @app.route("/settings/", methods=["GET", "POST"])
 def settings():
+    settings = list(mongo.db.index_template.find())
+    if request.method == "POST":
+        for set in settings:
+            mongo.db.index_template.update_one({"brand_text": set["brand_text"]}, {
+                                               "$set": {"brand_text": request.form.get("brand-name")}})
+        return redirect(url_for("settings", settings=settings))
 
-    return render_template("settings.html")
+    return render_template("settings.html", settings=settings)
 
 
 @ app.route("/logout")
