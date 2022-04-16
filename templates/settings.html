@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{%for template in settings%}
 <div class="centred container offset-m1 index-container">
 
     <h2 class="center-align font">If you like to customize clock page to fit your brilliant business you are in right
@@ -13,19 +14,20 @@
             <div class="collapsible-body">
                 <form class="col s6 offset-m2" method="POST" action="{{ url_for('settings') }}">
                     <div class=" ">
-                        <!-- secret code -->
+                        <!-- Brand Text -->
                         <div class="row">
-                            <div class="input-field col s6">
-                                <input id="brand-name" name="brand-name" type="text" class="validate" required>
+                            <div class="input-field col s12 m6">
+                                <input id="brand-name" name="brand-name" type="text"
+                                    value="{{template.brand_text.title()}}" class="validate" required>
                                 <label for="brand-name">Enter Your Brand Name</label>
                             </div>
-                            <div class="input-field col s2">
+                            <div class="input-field col s6 m2">
                                 <button id="verify-button" type="submit"
                                     class=" s3 btn-large green darken-4 text-shadow">
                                     Save
                                 </button>
                             </div>
-                            <div class="input-field col s2">
+                            <div class="input-field col s6 m2">
                                 <button id="reset-button" form="brand-default" type="submit"
                                     class=" s3 btn-large green darken-4 text-shadow">
                                     Reset
@@ -34,8 +36,37 @@
                         </div>
                     </div>
                 </form>
+                <!--Hidden form for reset button-->
                 <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
                     <input type="hidden" id="brand-name" name="brand-name" value="Zai Clock-In Software">
+                </form>
+                <!--Navbar color change form-->
+                <form class="col s6 offset-m2" id="nav-color" method="POST" action="{{ url_for('settings') }}">
+                    <div class=" ">
+                        <!-- Brand Text -->
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="navbar-color" name="navbar-color" type="color" class="validate"
+                                    value="{{ template.navbar_color }}" required>
+                                <p>Choose Nab Bar Color</p>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="nav-color" type="submit" class=" s3 btn-large green darken-4 text-shadow">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="nav-color-default" type="submit"
+                                    class=" s3 btn-large green darken-4 text-shadow">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- NavBar Color-->
+                <form method="POST" id="nav-color-default" action="{{ url_for('settings') }}">
+                    <input type="hidden" id="navbar-color" name="navbar-color" value="#311b92">
                 </form>
             </div>
         </li>
@@ -54,5 +85,5 @@
 
 
 
-
+{%endfor%}
 {%endblock%}

@@ -42,7 +42,7 @@ def page_not_found(e):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    settings = list(mongo.db.index_template.find())
+    settings = mongo.db.index_template.find()
     if request.method == "POST":
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
@@ -339,6 +339,7 @@ def add_employee():
                     # Add new employee to database.
                     mongo.db.employess.insert_one(add_employee)
                     flash("Employee registered successfully")
+
         return render_template("add-employee.html", clock_nr=rondom_clock_nr, settings=settings)
 
 
@@ -395,11 +396,19 @@ def delete_employee(clock_number):
 def settings():
     settings = list(mongo.db.index_template.find())
     if request.method == "POST":
+        brand_name = request.form.get("brand-name")
+        navbar_color = request.form.get("navbar-color")
         for set in settings:
-            mongo.db.index_template.update_one({"brand_text": set["brand_text"]}, {
-                                               "$set": {"brand_text": request.form.get("brand-name")}})
-        return redirect(url_for("settings", settings=settings))
+            if brand_name:
+                mongo.db.index_template.update_one({"brand_text": set["brand_text"]}, {
+                    "$set": {"brand_text": request.form.get("brand-name")}})
+            elif navbar_color:
+                mongo.db.index_template.update_one({"navbar_color": set["navbar_color"]}, {
+                    "$set": {"navbar_color": request.form.get("navbar-color")}})
 
+        print(settings)
+        return redirect(url_for("settings", settings=settings))
+    print(settings)
     return render_template("settings.html", settings=settings)
 
 

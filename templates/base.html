@@ -28,7 +28,7 @@
 <body id="scan">
     <header>
         <!-- top navbar -->
-        <nav class="nav-extended text-shadow deep-purple darken-4">
+        <nav class="nav-extended text-shadow" style="background-color: {{ template.navbar_color }};">
             <div class="nav-wrapper">
                 <a href="{{ url_for('index') }}" class="brand-logo">{{template.brand_text.title()}}</a>
                 <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right"> <i
@@ -44,9 +44,9 @@
         </nav>
 
         <!-- mobile sidenav -->
-        <ul class="sidenav text-shadow deep-purple darken-4" id="mobile-nav">
+        <ul class="sidenav text-shadow" id="mobile-nav" style="background-color: {{ template.navbar_color }};">
             <li>
-                <h4 class="center-align white-text text-darken 4">Clock In</h4>
+                <h4 class="center-align white-text text-darken 4">{{template.brand_text.title()}}</h4>
             </li>
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('employess') }}">Employess</a></li>
             <li><a class="center-align white-text text-darken 4" href="{{ url_for('add_employee') }}">Add Employee</a>
