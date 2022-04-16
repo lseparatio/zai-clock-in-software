@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dd = (dd < 10) ? "0" + dd : dd;
 
         let currentDate = dd + " " + ll + " " + yy;
-        let time = hh + ":" + mm + ":" + ss;
+        let time = hh + ":" + mm;
         setTimeout(function () { currentTime(); }, 1000);
         document.getElementById("time").innerHTML = `Time: ${time} Date: ${currentDate}`;
     }
