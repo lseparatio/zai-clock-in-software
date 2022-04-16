@@ -17,9 +17,9 @@
                         <!-- Brand Text -->
                         <div class="row">
                             <div class="input-field col s12 m6">
-                                <input name="brand-name" type="text" value="{{template.brand_text.title()}}"
+                                <input id="brand-name-id" name="brand-name" type="text" value="{{template.brand_text.title()}}"
                                     class="validate" required>
-                                <label for="brand-name">Enter Your Brand Name</label>
+                                <label for="brand-name-id">Enter Your Brand Name</label>
                             </div>
                             <div class="input-field col s6 m2">
                                 <button type="submit" class=" s3 btn-large green darken-4 text-shadow">
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <input name="navbar-color" type="color" class="validate"
-                                    value="{{ template.navbar_color }}" required>
+                                    value="{{ template.navbar_color }}">
                                 <p>Choose Nav Bar Color</p>
                             </div>
                             <div class="input-field col s6 m2">
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <input name="menu-text-color" type="color" class="validate"
-                                    value="{{ template.navbar_text_color }}" required>
+                                    value="{{ template.navbar_text_color }}">
                                 <p>Choose Menu Text Color</p>
                             </div>
                             <div class="input-field col s6 m2">
