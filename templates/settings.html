@@ -17,13 +17,12 @@
                         <!-- Brand Text -->
                         <div class="row">
                             <div class="input-field col s12 m6">
-                                <input id="brand-name" name="brand-name" type="text"
-                                    value="{{template.brand_text.title()}}" class="validate" required>
+                                <input name="brand-name" type="text" value="{{template.brand_text.title()}}"
+                                    class="validate" required>
                                 <label for="brand-name">Enter Your Brand Name</label>
                             </div>
                             <div class="input-field col s6 m2">
-                                <button  type="submit"
-                                    class=" s3 btn-large green darken-4 text-shadow">
+                                <button type="submit" class=" s3 btn-large green darken-4 text-shadow">
                                     Save
                                 </button>
                             </div>
@@ -38,17 +37,17 @@
                 </form>
                 <!--Hidden form for reset button-->
                 <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" id="brand-name" name="brand-name" value="Zai Clock-In Software">
+                    <input type="hidden" name="brand-name" value="Zai Clock-In Software">
                 </form>
                 <!--Navbar color change form-->
                 <form class="col s6 offset-m2" id="nav-color" method="POST" action="{{ url_for('settings') }}">
                     <div class=" ">
-                        <!-- Brand Text -->
+                        <!-- Nav Bar Color-->
                         <div class="row">
                             <div class="input-field col s12 m6">
-                                <input id="navbar-color" name="navbar-color" type="color" class="validate"
+                                <input name="navbar-color" type="color" class="validate"
                                     value="{{ template.navbar_color }}" required>
-                                <p>Choose Nab Bar Color</p>
+                                <p>Choose Nav Bar Color</p>
                             </div>
                             <div class="input-field col s6 m2">
                                 <button form="nav-color" type="submit" class=" s3 btn-large green darken-4 text-shadow">
@@ -64,14 +63,43 @@
                         </div>
                     </div>
                 </form>
-                <!-- NavBar Color-->
+                <!-- Nav Bar Color Default -->
                 <form method="POST" id="nav-color-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" id="navbar-color" name="navbar-color" value="#311b92">
+                    <input type="hidden" name="navbar-color" value="#311b92">
+                </form>
+                <!--Menu Text  Color-->
+                <form class="col s6 offset-m2" id="menu-text-color" method="POST" action="{{ url_for('settings') }}">
+                    <div class=" ">
+                        <!-- Menu Text  Color -->
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input name="menu-text-color" type="color" class="validate"
+                                    value="{{ template.navbar_text_color }}" required>
+                                <p>Choose Menu Text Color</p>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="menu-text-color" type="submit"
+                                    class=" s3 btn-large green darken-4 text-shadow">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="menu-text-color-default" type="submit"
+                                    class=" s3 btn-large red darken-4 text-shadow">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- NavBar Color-->
+                <form method="POST" id="menu-text-color-default" action="{{ url_for('settings') }}">
+                    <input type="hidden" name="menu-text-color" value="#FFFFFF">
                 </form>
             </div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+            <div class="collapsible-header blue"><i class="material-icons">place</i>Second</div>
             <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
         <li>

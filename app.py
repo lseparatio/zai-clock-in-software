@@ -398,6 +398,7 @@ def settings():
     if request.method == "POST":
         brand_name = request.form.get("brand-name")
         navbar_color = request.form.get("navbar-color")
+        menu_text_color = request.form.get("menu-text-color")
         for set in settings:
             if brand_name:
                 mongo.db.index_template.update_one({"brand_text": set["brand_text"]}, {
@@ -405,6 +406,9 @@ def settings():
             elif navbar_color:
                 mongo.db.index_template.update_one({"navbar_color": set["navbar_color"]}, {
                     "$set": {"navbar_color": request.form.get("navbar-color")}})
+            elif menu_text_color:
+                mongo.db.index_template.update_one({"navbar_text_color": set["navbar_text_color"]}, {
+                    "$set": {"navbar_text_color": request.form.get("menu-text-color")}})
 
         print(settings)
         return redirect(url_for("settings", settings=settings))
