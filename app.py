@@ -400,6 +400,7 @@ def settings():
         navbar_color = request.form.get("navbar-color")
         menu_text_color = request.form.get("menu-text-color")
         font_family_name = request.form.get("font-name")
+        font_weight = request.form.get("font-weight")
 
         for set in settings:
             if brand_name:
@@ -414,6 +415,9 @@ def settings():
             elif font_family_name:
                 mongo.db.index_template.update_one({"font_family": set["font_family"]}, {
                     "$set": {"font_family": request.form.get("font-name")}})
+            elif font_weight:
+                mongo.db.index_template.update_one({"font_weight": set["font_weight"]}, {
+                    "$set": {"font_weight": request.form.get("font-weight")}})
 
         print(settings)
         return redirect(url_for("settings", settings=settings))

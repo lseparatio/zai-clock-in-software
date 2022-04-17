@@ -139,7 +139,8 @@ label[for=end-date],
 label[for=end-time],
 label[for=query],
 label[for=brand-name-id],
-label[for=font-family-input] {
+label[for=font-family-input],
+label[for=font-weight-input] {
     color: var(--text);
 }
 

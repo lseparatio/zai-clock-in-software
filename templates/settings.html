@@ -129,6 +129,34 @@
                 <form method="POST" id="font-default" action="{{ url_for('settings') }}">
                     <input type="hidden" name="font-name" value="Poppins">
                 </form>
+                <form class="col s6 offset-m2" id="font-weight" method="POST" action="{{ url_for('settings') }}">
+                    <div class=" ">
+                        <!-- Google Font Name -->
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="font-weight-input" name="font-weight" type="number"
+                                    value="{{template.font_weight}}" min="300" max="700" class="validate" required>
+                                <label for="font-weight-input">Font weight betwen 300 - 700</label>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button type="submit" form="font-weight"
+                                    class=" s3 btn-large green accent-4 text-shadow">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="font-weight-default" type="submit"
+                                    class=" s3 btn-large red btn text-shadow">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--Hidden form for reset button-->
+                <form method="POST" id="font-weight-default" action="{{ url_for('settings') }}">
+                    <input type="hidden" name="font-weight" value="500">
+                </form>
             </div>
         </li>
         <li>
