@@ -3,32 +3,33 @@
 {%for template in settings%}
 <div class="centred container offset-m1 index-container">
 
-    <h5 class="center-align font">If you like to customize clock page to fit your brilliant business you are in right
-        place!</h5>
-
-
-
-    <ul class="collapsible blue">
+    <ul class="collapsible blue-background">
         <li>
-            <div class="collapsible-header blue"><i class="material-icons">filter_drama</i>NavBar</div>
+            <div class="collapsible-header blue" style="text-align: center;">If you like to customize template to fit
+                your brilliant business you
+                are in right
+                place!</div>
+        </li>
+        <li>
+            <div class="collapsible-header blue">NavBar</div>
             <div class="collapsible-body">
                 <form class="col s6 offset-m2" method="POST" action="{{ url_for('settings') }}">
                     <div class=" ">
                         <!-- Brand Text -->
                         <div class="row">
                             <div class="input-field col s12 m6">
-                                <input id="brand-name-id" name="brand-name" type="text" value="{{template.brand_text.title()}}"
-                                    class="validate" required>
+                                <input id="brand-name-id" name="brand-name" type="text"
+                                    value="{{template.brand_text.title()}}" class="validate" required>
                                 <label for="brand-name-id">Enter Your Brand Name</label>
                             </div>
                             <div class="input-field col s6 m2">
-                                <button type="submit" class=" s3 btn-large green darken-4 text-shadow">
+                                <button type="submit" class=" s3 btn-large green accent-4 text-shadow">
                                     Save
                                 </button>
                             </div>
                             <div class="input-field col s6 m2">
                                 <button id="reset-button" form="brand-default" type="submit"
-                                    class=" s3 btn-large red darken-4 text-shadow">
+                                    class=" s3 btn-large red btn text-shadow">
                                     Reset
                                 </button>
                             </div>
@@ -37,7 +38,7 @@
                 </form>
                 <!--Hidden form for reset button-->
                 <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="brand-name" value="Zai Clock-In Software">
+                    <input type="hidden" name="brand-name" value="Clock-In">
                 </form>
                 <!--Navbar color change form-->
                 <form class="col s6 offset-m2" id="nav-color" method="POST" action="{{ url_for('settings') }}">
@@ -50,13 +51,13 @@
                                 <p>Choose Nav Bar Color</p>
                             </div>
                             <div class="input-field col s6 m2">
-                                <button form="nav-color" type="submit" class=" s3 btn-large green darken-4 text-shadow">
+                                <button form="nav-color" type="submit" class=" s3 btn-large green accent-4 text-shadow">
                                     Save
                                 </button>
                             </div>
                             <div class="input-field col s6 m2">
                                 <button form="nav-color-default" type="submit"
-                                    class=" s3 btn-large red darken-4 text-shadow">
+                                    class=" s3 btn-large red btn text-shadow">
                                     Reset
                                 </button>
                             </div>
@@ -79,13 +80,13 @@
                             </div>
                             <div class="input-field col s6 m2">
                                 <button form="menu-text-color" type="submit"
-                                    class=" s3 btn-large green darken-4 text-shadow">
+                                    class=" s3 btn-large green accent-4 text-shadow">
                                     Save
                                 </button>
                             </div>
                             <div class="input-field col s6 m2">
                                 <button form="menu-text-color-default" type="submit"
-                                    class=" s3 btn-large red darken-4 text-shadow">
+                                    class=" s3 btn-large red btn text-shadow">
                                     Reset
                                 </button>
                             </div>
@@ -99,16 +100,43 @@
             </div>
         </li>
         <li>
-            <div class="collapsible-header blue"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-header blue">Google Font</div>
+            <div class="collapsible-body">
+                <form class="col s6 offset-m2" id="font-family-name" method="POST" action="{{ url_for('settings') }}">
+                    <div class=" ">
+                        <!-- Google Font Name -->
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="font-family-input" name="font-name" type="text"
+                                    value="{{template.font_family.title()}}" class="validate" required>
+                                <label for="font-family-input">Enter Google Font Family Name</label>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button type="submit" form="font-family-name"
+                                    class=" s3 btn-large green accent-4 text-shadow">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="input-field col s6 m2">
+                                <button form="font-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--Hidden form for reset button-->
+                <form method="POST" id="font-default" action="{{ url_for('settings') }}">
+                    <input type="hidden" name="font-name" value="Poppins">
+                </form>
+            </div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-header blue">Third</div>
             <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
     </ul>
 </div>
-
 
 
 

@@ -9,7 +9,7 @@ body {
     background-size: cover;
     color: var(--text);
     min-height: 100%;
-    font-family: 'Poppins', sans-serif;
+
 }
 
 h3 {
@@ -124,7 +124,6 @@ tr {
     border: 1px solid white;
 }
 
-
 label[for=username],
 label[for=password],
 label[for=first_name],
@@ -138,7 +137,9 @@ label[for=start-date],
 label[for=start-time],
 label[for=end-date],
 label[for=end-time],
-label[for=query] {
+label[for=query],
+label[for=brand-name-id],
+label[for=font-family-input] {
     color: var(--text);
 }
 
@@ -175,4 +176,8 @@ input,
 label {
     color: #fafafa;
     font-family: 'Poppins', sans-serif;
+}
+
+.blue-background {
+    background-color: #311b92;
 }
