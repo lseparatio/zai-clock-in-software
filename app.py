@@ -10,6 +10,7 @@ from flask import (
 from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from pkg_resources import working_set
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -46,9 +47,9 @@ def index():
     if request.method == "POST":
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
-            {"clock_in_nr": int(request.form.get("clock-number"))})
+            {"clock_in_nr": request.form.get("clock-number")})
         employee = mongo.db.employess.find_one(
-            {"clock_nr": int(request.form.get("clock-number"))})
+            {"clock_nr": request.form.get("clock-number")})
 
         if not employee:
             # Check if clock in number exist in employees
@@ -60,7 +61,7 @@ def index():
             flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
                                                                        ) + ", " + "you was clock out successfully!")
             clock_out = {
-                "clock_in_nr": int(request.form.get("clock-number")),
+                "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
@@ -70,7 +71,7 @@ def index():
             clocks = {
                 "first_name": employee["first_name"],
                 "last_name": employee["last_name"],
-                "clock_nr": int(request.form.get("clock-number")),
+                "clock_nr": request.form.get("clock-number"),
                 "date_in": are_in["date"],
                 "time_in": are_in["time"],
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
@@ -78,7 +79,7 @@ def index():
             }
             mongo.db.clocks.insert_one(clocks)
             clock_in = {
-                "clock_in_nr": int(request.form.get("clock-number"))
+                "clock_in_nr": request.form.get("clock-number")
             }
             # Delete from clocked_in
             mongo.db.clocked_in.delete_one(clock_in)
@@ -88,13 +89,13 @@ def index():
             flash(str(employee["first_name"].capitalize()) + " " + str(employee["last_name"].capitalize()
                                                                        ) + ", " + "you was clock in successfully!")
             clock_in = {
-                "clock_in_nr": int(request.form.get("clock-number")),
+                "clock_in_nr": request.form.get("clock-number"),
                 "date": datetime.datetime.now().strftime("%m/%d/%Y"),
                 "time": datetime.datetime.now().strftime("%H:%M:%S")
             }
             mongo.db.clocked_in.insert_one(clock_in)
             clock_out = {
-                "clock_in_nr": int(request.form.get("clock-number"))
+                "clock_in_nr": request.form.get("clock-number")
             }
             mongo.db.clocked_out.delete_one(clock_out)
 
@@ -346,25 +347,25 @@ def add_employee():
 @app.route("/edit_employee/<clock_number>", methods=["GET", "POST"])
 def edit_employee(clock_number):
     settings = list(mongo.db.index_template.find())
-    employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
+    employess = mongo.db.employess.find_one({"clock_nr": clock_number})
     # Check if autentificated
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
         return redirect(url_for("login"))
     elif request.method == "POST":
-        mongo.db.employess.update_one({"clock_nr": int(clock_number)}, {"$set":
-                                                                        {"first_name": request.form.get("first_name").lower(),
-                                                                         "last_name": request.form.get("last_name").lower(),
-                                                                         "email": request.form.get("email").lower(),
-                                                                         "phone_number": request.form.get("phone_number"),
-                                                                         "departament": request.form.get("departament").lower(),
-                                                                         "clock_nr": int(request.form.get("clock-in-number")),
-                                                                         "start_date": request.form.get("start-date"),
-                                                                         "start_time": request.form.get("start-time"),
-                                                                         "end_date": request.form.get("end-date"),
-                                                                         "end_time": request.form.get("end-time"),
-                                                                         "registered_by": employess["registered_by"],
-                                                                         "last_updated_by": session["user"]}})
+        mongo.db.employess.update_one({"clock_nr": clock_number}, {"$set":
+                                                                   {"first_name": request.form.get("first_name").lower(),
+                                                                    "last_name": request.form.get("last_name").lower(),
+                                                                    "email": request.form.get("email").lower(),
+                                                                    "phone_number": request.form.get("phone_number"),
+                                                                    "departament": request.form.get("departament").lower(),
+                                                                    "clock_nr": request.form.get("clock-in-number"),
+                                                                    "start_date": request.form.get("start-date"),
+                                                                    "start_time": request.form.get("start-time"),
+                                                                    "end_date": request.form.get("end-date"),
+                                                                    "end_time": request.form.get("end-time"),
+                                                                    "registered_by": employess["registered_by"],
+                                                                    "last_updated_by": session["user"]}})
         flash("Employee Successfully Updated")
         return redirect(url_for("edit_employee", clock_number=clock_number))
 
@@ -375,7 +376,7 @@ def edit_employee(clock_number):
 @app.route("/delete/<clock_number>", methods=["GET", "POST"])
 def delete_employee(clock_number):
     settings = list(mongo.db.index_template.find())
-    employess = mongo.db.employess.find_one({"clock_nr": int(clock_number)})
+    employess = mongo.db.employess.find_one({"clock_nr": clock_number})
     # Check if autentificated
     if 'user' not in session:
         flash("You need to be authenticated to access this page!")
@@ -384,7 +385,7 @@ def delete_employee(clock_number):
         if request.method == "POST":
             clock_nr_v = request.form.get("clock-number-v")
             if clock_number == clock_nr_v:
-                mongo.db.employess.delete_one({"clock_nr": int(clock_nr_v)})
+                mongo.db.employess.delete_one({"clock_nr": clock_nr_v})
                 flash("Employee was successfully deleted!")
                 return redirect(url_for("employess"))
 
@@ -426,6 +427,24 @@ def settings():
         return redirect(url_for("settings"))
 
     return render_template("settings.html", settings=settings)
+
+
+@ app.route("/working-now")
+def working_now():
+    settings = list(mongo.db.index_template.find())
+    working = list(mongo.db.clocked_in.find())
+    working_now = []
+    if 'user' not in session:
+        # Preventing error page if direct link acces. Redirecting to login.
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+    for worker in working:
+        working_in = list(mongo.db.employess.find(
+            {"$text": {"$search": worker['clock_in_nr']}}))
+        working_now.append(working_in)
+
+    return render_template("working-now.html", working_now=working_now, settings=settings)
 
 
 @ app.route("/logout")
