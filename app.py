@@ -395,7 +395,11 @@ def delete_employee(clock_number):
 @app.route("/settings/", methods=["GET", "POST"])
 def settings():
     settings = list(mongo.db.index_template.find())
-    if request.method == "POST":
+    # Check if autentificated
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+    elif request.method == "POST":
         brand_name = request.form.get("brand-name")
         navbar_color = request.form.get("navbar-color")
         menu_text_color = request.form.get("menu-text-color")
@@ -418,7 +422,7 @@ def settings():
             elif font_weight:
                 mongo.db.index_template.update_one({"font_weight": set["font_weight"]}, {
                     "$set": {"font_weight": request.form.get("font-weight")}})
-        # Redirecting to restart the function to allow user to see changes instant 
+        # Redirecting to restart the function to allow user to see changes instant
         return redirect(url_for("settings"))
 
     return render_template("settings.html", settings=settings)
