@@ -418,7 +418,7 @@ def settings():
             elif font_weight:
                 mongo.db.index_template.update_one({"font_weight": set["font_weight"]}, {
                     "$set": {"font_weight": request.form.get("font-weight")}})
-        # Redirecting to restart the function to allow user to see changes instant
+        # Redirecting to restart the function to allow user to see changes instant 
         return redirect(url_for("settings"))
 
     return render_template("settings.html", settings=settings)
