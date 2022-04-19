@@ -2,7 +2,7 @@
 {% block content %}
 
 <table class="centered responsive-table container employee-table">
-    {%for working in working_now%}
+    {%for working in not_working%}
     <thead>
         <tr>
             <th>First Name</th>
@@ -10,8 +10,8 @@
             <th>Departament</th>
             <th>Email</th>
             <th>Clock Nr</th>
-            <th>Clock In Date</th>
-            <th>Clock In Time</th>
+            <th>Clock Out Date</th>
+            <th>Clock Out Time</th>
             <th>Registered By</th>
         </tr>
     </thead>

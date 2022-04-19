@@ -440,11 +440,61 @@ def working_now():
         return redirect(url_for("login"))
 
     for worker in working:
+
         working_in = list(mongo.db.employess.find(
             {"$text": {"$search": worker['clock_in_nr']}}))
+        # We need to join informations from worker
+        # list with working_in list because they are in
+        # diferent collections in database and we need informations from
+        # both sides.
+        worker_copy = worker.copy()
+        working_in.append(worker_copy)
+        # At this point we got 2 dictionaries in a list we want
+        # to have al info in same dictionary.
+        working_in = {k: v for x in working_in for k, v in x.items()}
+        # Append every dictionary created till now
+        # to a list to be able to be used in front-end.
         working_now.append(working_in)
 
+    if working_now == []:
+        flash("We found no users here please try again latter")
+        return render_template("home-now.html", working_now=working_now, settings=settings)
+
     return render_template("working-now.html", working_now=working_now, settings=settings)
+
+
+@ app.route("/home-now")
+def home_now():
+    settings = list(mongo.db.index_template.find())
+    home = list(mongo.db.clocked_out.find())
+    not_working = []
+    if 'user' not in session:
+        # Preventing error page if direct link acces. Redirecting to login.
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+    for worker in home:
+
+        home_now = list(mongo.db.employess.find(
+            {"$text": {"$search": worker['clock_in_nr']}}))
+        # We need to join informations from worker
+        # list with home list because they are in
+        # diferent collections in database and we need informations from
+        # both sides.
+        worker_copy = worker.copy()
+        home_now.append(worker_copy)
+        # At this point we got 2 dictionaries in a list we want
+        # to have al info in same dictionary.
+        home_now = {k: v for x in home_now for k, v in x.items()}
+        # Append every dictionary created till now
+        # to a list to be able to be used in front-end.
+        not_working.append(home_now)
+
+    if not_working == []:
+        flash("We found no users here please try again latter")
+        return render_template("home-now.html", not_working=not_working, settings=settings)
+
+    return render_template("home-now.html", not_working=not_working, settings=settings)
 
 
 @ app.route("/logout")
