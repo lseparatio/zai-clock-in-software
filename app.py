@@ -1,6 +1,7 @@
 from crypt import methods
 import os
 import datetime
+import profile
 import random
 import re
 import uuid
@@ -244,7 +245,7 @@ def login():
     return render_template("login.html", settings=settings)
 
 
-@app.route("/dashboard/", methods=["GET", "POST"])
+@app.route("/dashboard")
 def dashboard():
     settings = list(mongo.db.index_template.find())
     if 'user' not in session:
@@ -256,7 +257,29 @@ def dashboard():
     return render_template("dashboard.html", email=email, admin=admin, settings=settings)
 
 
-@app.route("/employess/", methods=["GET", "POST"])
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    admin = mongo.db.admin.find({"email": session["user"]})
+    settings = list(mongo.db.index_template.find())
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+    elif request.method == "POST":
+        mongo.db.admin.update_one({"email": session["user"]}, {"$set":
+                                                               {"username": request.form.get("username").lower(),
+                                                                "first_name": request.form.get("first_name").lower(),
+                                                                "last_name": request.form.get("last_name").lower(),
+                                                                "email": request.form.get("email").lower(),
+                                                                "phone_number": request.form.get("phone_number")
+                                                                }})
+        flash("Profile Successfully Updated")
+        return redirect(url_for("profile"))
+
+    return render_template("profile.html", admin=admin, settings=settings)
+
+
+@app.route("/employess", methods=["GET", "POST"])
 def employess():
     settings = list(mongo.db.index_template.find())
     if 'user' not in session:
