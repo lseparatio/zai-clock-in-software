@@ -20,20 +20,18 @@
     <div class="col s12 m2 offset-m3">
         <div class="card-panel blue">
             <a class="white-text" href="{{ url_for('settings') }}">Settings <i class="material-icons">settings</i></a>
+        </div>
+    </div>
+    <div class="col s12 m2">
+        <div class="card-panel blue">
+            <span class="white-text">My Profile<i class="material-icons">person</i>
             </span>
         </div>
     </div>
     <div class="col s12 m2">
         <div class="card-panel blue">
-            <span class="white-text">My Profile <i class="material-icons">person</i>
-            </span>
-        </div>
-    </div>
-    <div class="col s12 m2">
-        <div class="card-panel blue">
-            <a class="white-text" href="{{ url_for('add_employee') }}">Add
-                Employee <i class="material-icons">person_add</i></a>
-            </span>
+            <a class="white-text" href="{{ url_for('register') }}">Add
+                Admin<i class="material-icons">person_add</i></a>
         </div>
     </div>
 </div>
@@ -53,9 +51,8 @@
     </div>
     <div class="col s12 m2">
         <div class="card-panel blue">
-            <a class="white-text" href="{{ url_for('register') }}">Add
-                Admin <i class="material-icons">person_add</i></a>
-            </span>
+            <a class="white-text" href="{{ url_for('add_employee') }}">Add
+                Employee<i class="material-icons">person_add</i></a>
         </div>
     </div>
 </div>
