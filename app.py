@@ -350,7 +350,7 @@ def add_employee():
                         "email": request.form.get("email").lower(),
                         "phone_number": request.form.get("phone_number"),
                         "departament": request.form.get("departament").lower(),
-                        "clock_nr": int(request.form.get("clock-in-number")),
+                        "clock_nr": request.form.get("clock-in-number"),
                         "start_date": request.form.get("start-date"),
                         "start_time": request.form.get("start-time"),
                         "end_date": request.form.get("end-date"),
@@ -516,6 +516,18 @@ def home_now():
         return render_template("home-now.html", not_working=not_working, settings=settings)
 
     return render_template("home-now.html", not_working=not_working, settings=settings)
+
+
+@app.route("/presence")
+def presence():
+    settings = list(mongo.db.index_template.find())
+    if 'user' not in session:
+        flash("You need to be authenticated to access this page!")
+        return redirect(url_for("login"))
+
+    # List all employee
+    employess = list(mongo.db.clocks.find())
+    return render_template("presence.html", employess=employess, settings=settings)
 
 
 @ app.route("/logout")
