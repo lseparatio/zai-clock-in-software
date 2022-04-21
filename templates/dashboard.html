@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col s12 m8 offset-m2">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <h5 class="center-align white-text text-darken-4">
                 {% for user in admin %}
                 Wellcome, {{ user.first_name.capitalize() }}
@@ -18,18 +18,18 @@
 
 <div class="row">
     <div class="col s12 m2 offset-m3">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('settings') }}">Settings <i class="material-icons">settings</i></a>
         </div>
     </div>
     <div class="col s12 m2">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('profile') }}">My Profile<i class="material-icons">person</i>
             </a>
         </div>
     </div>
     <div class="col s12 m2">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('register') }}">Add
                 Admin<i class="material-icons">person_add</i></a>
         </div>
@@ -38,19 +38,19 @@
 
 <div class="row">
     <div class="col s12 m2 offset-m3">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('working_now') }}">Working Now <i
                     class="material-icons">settings</i></a>
         </div>
     </div>
     <div class="col s12 m2">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('home_now') }}">Home Now <i class="material-icons">person</i>
             </a>
         </div>
     </div>
     <div class="col s12 m2">
-        <div class="card-panel blue">
+        <div class="card-panel blue-background">
             <a class="white-text" href="{{ url_for('add_employee') }}">Add
                 Employee<i class="material-icons">person_add</i></a>
         </div>
