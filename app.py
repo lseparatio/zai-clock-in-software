@@ -228,8 +228,6 @@ def login():
             elif check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("email").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("email")))
                 return redirect(url_for(
                     "dashboard", email=session["user"]))
             else:

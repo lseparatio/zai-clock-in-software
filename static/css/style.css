@@ -9,6 +9,9 @@ body {
     background-size: cover;
     color: var(--text);
     min-height: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 
 }
 
@@ -181,4 +184,8 @@ label {
 
 .blue-background {
     background-color: #311b92;
+}
+
+main {
+    flex: 1 0 auto;
 }
