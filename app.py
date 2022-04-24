@@ -1,9 +1,7 @@
 from crypt import methods
 import os
 import datetime
-import profile
 import random
-import re
 import uuid
 from flask import (
     Flask, Markup, flash, render_template,
