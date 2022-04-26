@@ -1,6 +1,25 @@
-# zai-clock-in-software
+# Zai Clock in Software
+
+Welcome, this project is 
+this project is a clock in software for small business
 
 
-Errors and solving
-Detected that clock-js is throwing an error in console because that div(time) do not exist in another pages to append html.
-Solution: i created another js file dedicated for index.js
+See this project on live enviroment on GitHub Pages here: <https://zai-clock-in-software.herokuapp.com/>
+
+![Website on different screen sizes](readme-assets/img/screens.png)
+
+
+
+### User Stories
+
+As a employer:
+
+- I want users to be able to easily navigate my website on any device.
+- I want to bo able to add, edit employees.
+- I want to be able to check presence.
+- I want my website to be accessible to anyone even for screen readers.
+- I want to be able to personalize my software
+
+As a employee:
+
+- I want to be able to clock in and out easy and fast.
