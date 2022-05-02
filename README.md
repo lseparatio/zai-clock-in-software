@@ -240,6 +240,34 @@ In this page we can delete employee details, action is irreversible. We use cloc
 
 ![Delete Employees PopUp Mobile](readme-assets/img/delete-employee-mobile.png)
 
+</details>
+
+## Wireframes, i used Balsamiq
+
+<details>
+<summary>Click to expend wireframes</summary>
+
+### Index page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Index Desktop&Tablet Wireframe](readme-assets/wireframes/index-desktop.png)
+
+ - Mobile Wireframe
+
+![Index Mobile Wireframe](readme-assets/wireframes/index-mobile.png)
+
+
+### Log In page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Log In page Desktop&Tablet Wireframe](readme-assets/wireframes/login-desktop.png)
+
+ - Mobile Wireframe
+
+![Index Mobile Wireframe](readme-assets/wireframes/login-mobile.png)
+
 
 </details>
 
