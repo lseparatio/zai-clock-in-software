@@ -2,129 +2,124 @@
 {% block content %}
 
 <table class="centered responsive-table container">
-    <div class="row">
-        <form class="col s10 m10 offset-m1" method="POST"
-            action="{{ url_for('add_employee' , username=session['user']) }}">
-            <div class="card-panel add-employee">
+  <div class="row">
+    <form class="col s10 m10 offset-m1" method="POST" action="{{ url_for('add_employee' , username=session['user']) }}">
+      <div class="card-panel add-employee">
 
-                <!--First Name-->
-                <div class="row">
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                        <input id="first_name" name="first_name" type="text" minlength="1" maxlength="20"
-                            data-length="20" pattern="^[a-zA-Z]{1,20}$" class="validate" required>
-                        <label for="first_name">First Name*</label>
-                        <span class="helper-text" data-error="Please enter your first name" data-success="✔️">Please
-                            enter
-                            your first name</span>
-                    </div>
-                    <!-- Last Name -->
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                        <input id="last_name" name="last_name" type="text" minlength="1" maxlength="20" data-length="20"
-                            pattern="^[a-zA-Z]{1,20}$" class="validate" required>
-                        <label for="last_name">Last Name*</label>
-                        <span class="helper-text" data-error="Please enter your last name" data-success="✔️">Please
-                            enter
-                            your last name</span>
-                    </div>
-                </div>
+        <!--First Name-->
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+            <input id="first_name" name="first_name" type="text" minlength="1" maxlength="20" data-length="20"
+              pattern="^[a-zA-Z]{1,20}$" class="validate" required>
+            <label for="first_name">First Name*</label>
+            <span class="helper-text" data-error="Please enter your first name" data-success="✔️">Please
+              enter
+              your first name</span>
+          </div>
+          <!-- Last Name -->
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+            <input id="last_name" name="last_name" type="text" minlength="1" maxlength="20" data-length="20"
+              pattern="^[a-zA-Z]{1,20}$" class="validate" required>
+            <label for="last_name">Last Name*</label>
+            <span class="helper-text" data-error="Please enter your last name" data-success="✔️">Please
+              enter
+              your last name</span>
+          </div>
+        </div>
 
-                <div class="row">
-                    <!-- Email -->
-                    <div class="input-field col s12 m6">
-                        <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
-                        <input id="email" name="email" type="email" class="validate" required>
-                        <label for="email">Email*</label>
-                        <span class="helper-text" data-error="Please enter your email address" data-success="✔️">Please
-                            enter your email address</span>
-                    </div>
-                    <!--Phone Number-->
-                    <div class="input-field col s12 m6">
-                        <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
-                        <input id="phone_number" name="phone_number" pattern="^[0-9]{11,14}$" type="tel" minlength="11"
-                            maxlength="14" data-length="14" class="validate" required>
-                        <label for="phone_number">Phone Number*</label>
-                        <span class="helper-text" data-error="Please enter your phone number" data-success="✔️">Please
-                            enter
-                            your phone number</span>
-                    </div>
-                </div>
+        <div class="row">
+          <!-- Email -->
+          <div class="input-field col s12 m6">
+            <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
+            <input id="email" name="email" type="email" class="validate" required>
+            <label for="email">Email*</label>
+            <span class="helper-text" data-error="Please enter your email address" data-success="✔️">Please
+              enter your email address</span>
+          </div>
+          <!--Phone Number-->
+          <div class="input-field col s12 m6">
+            <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
+            <input id="phone_number" name="phone_number" pattern="^[0-9]{11,14}$" type="tel" minlength="11"
+              maxlength="14" data-length="14" class="validate" required>
+            <label for="phone_number">Phone Number*</label>
+            <span class="helper-text" data-error="Please enter your phone number" data-success="✔️">Please
+              enter
+              your phone number</span>
+          </div>
+        </div>
 
-                <div class="row">
-                    <!-- Departament -->
-                    <div class="input-field col s12 m6">
-                        <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
-                        <input id="departament" name="departament" type="text" class="validate" required>
-                        <label for="departament">Departament*</label>
-                        <span class="helper-text" data-error="Please enter your departament" data-success="✔️">Please
-                            enter your departament</span>
-                    </div>
-                    <!--Clock Nr-->
-                    <div class="input-field col s12 m6">
-                        <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
-                        <input id="clock-in-number" name="clock-in-number" pattern="^[0-9]{11,14}$" type="text"
-                            minlength="11" maxlength="14" data-length="14" class="validate" value="{{clock_nr}}"
-                            readonly required>
-                        <label for="clock-in-number">Clock Number*</label>
-                        <span class="helper-text" data-error="This field cannot be edited" data-success="✔️">Auto
-                            generated clock
-                            number.</span>
-                    </div>
-                </div>
+        <div class="row">
+          <!-- Departament -->
+          <div class="input-field col s12 m6">
+            <i class="fa-regular fa-envelope prefix light-blue-text text-darken-4"></i>
+            <input id="departament" name="departament" type="text" class="validate" required>
+            <label for="departament">Departament*</label>
+            <span class="helper-text" data-error="Please enter your departament" data-success="✔️">Please
+              enter your departament</span>
+          </div>
+          <!--Clock Nr-->
+          <div class="input-field col s12 m6">
+            <i class="fa-solid fa-phone prefix light-blue-text text-darken-4"></i>
+            <input id="clock-in-number" name="clock-in-number" pattern="^[0-9]{11,14}$" type="text" minlength="11"
+              maxlength="14" data-length="14" class="validate" value="{{clock_nr}}" readonly required>
+            <label for="clock-in-number">Clock Number*</label>
+            <span class="helper-text" data-error="This field cannot be edited" data-success="✔️">Auto
+              generated clock
+              number.</span>
+          </div>
+        </div>
 
-                <div class="row">
-                    <!-- Start Date -->
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
-                        <input id="start-date" name="start-date" type="date" class="validate" required>
-                        <label for="start-date">Start Date*</label>
-                        <span class="helper-text" data-error="Please select start date" data-success="✔️">Please
-                            select start date</span>
-                    </div>
-                    <!-- Start Time -->
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                        <input id="start-time" name="start-time" type="time" minlength="5" maxlength="20"
-                            data-length="20" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="start-time">Start Time*</label>
-                        <span class="helper-text" data-error="Please select start time 24H format"
-                            data-success="✔️">Please
-                            select start time 24H format</span>
-                    </div>
-                </div>
+        <div class="row">
+          <!-- Start Date -->
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+            <input id="start-date" name="start-date" type="date" class="validate" required>
+            <label for="start-date">Start Date*</label>
+            <span class="helper-text" data-error="Please select start date" data-success="✔️">Please
+              select start date</span>
+          </div>
+          <!-- Start Time -->
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+            <input id="start-time" name="start-time" type="time" minlength="5" maxlength="20" data-length="20"
+              pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="start-time">Start Time*</label>
+            <span class="helper-text" data-error="Please select start time 24H format" data-success="✔️">Please
+              select start time 24H format</span>
+          </div>
+        </div>
 
-                <div class="row">
-                    <!-- End Date -->
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
-                        <input id="end-date" name="end-date" type="date" class="validate">
-                        <label for="end-date">End Date</label>
-                        <span class="helper-text" data-error="Please select end date" data-success="✔️">Please
-                            select end date</span>
-                    </div>
-                    <!-- End Time -->
-                    <div class="input-field col s12 m6">
-                        <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                        <input id="end-time" name="end-time" type="time" minlength="5" maxlength="20" data-length="20"
-                            pattern="^[a-zA-Z0-9]{5,15}$" class="validate">
-                        <label for="end-time">End Time</label>
-                        <span class="helper-text" data-error="Please select start time 24H format"
-                            data-success="✔️">Please
-                            select end time 24H format</span>
-                    </div>
-                </div>
+        <div class="row">
+          <!-- End Date -->
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+            <input id="end-date" name="end-date" type="date" class="validate">
+            <label for="end-date">End Date</label>
+            <span class="helper-text" data-error="Please select end date" data-success="✔️">Please
+              select end date</span>
+          </div>
+          <!-- End Time -->
+          <div class="input-field col s12 m6">
+            <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+            <input id="end-time" name="end-time" type="time" minlength="5" maxlength="20" data-length="20"
+              pattern="^[a-zA-Z0-9]{5,15}$" class="validate">
+            <label for="end-time">End Time</label>
+            <span class="helper-text" data-error="Please select start time 24H format" data-success="✔️">Please
+              select end time 24H format</span>
+          </div>
+        </div>
 
-                <!-- register -->
-                <div class="row">
-                    <button id="register-employee" type="submit"
-                        class="col s12 btn-large light-blue darken-4 text-shadow">
-                        Register Employee<i class="fas fa-sign-in-alt"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+        <!-- register -->
+        <div class="row">
+          <button id="register-employee" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+            Register Employee<i class="fas fa-sign-in-alt"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </table>
 
-    {%endblock%}
+{%endblock%}

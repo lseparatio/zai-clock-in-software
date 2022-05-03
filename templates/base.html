@@ -3,126 +3,124 @@
 {%for template in settings%}
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clock-In Software For Small Company" />
-    <meta name="keywords" content="Clock-In, Software, Small Company, Ionut Zapototchi" />
-    <meta name="author" content="Ionut Zapototchi" />
-    <!--Open Graph Metas-->
-    <meta property="og:image" content="#" />
-    <meta property="og:title" content="Clock-In Software For Small Company" />
-    <meta property="og:description" content="Clock-In Software For Small Company" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="theme-color" content="#311b92" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!--Google Font-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family={{template.font_family.title()}}:wght@{{template.font_weight}}&display=swap"
-        rel="stylesheet">
-    {% block styles %}
-    {% endblock %}
-    <title>Clock In For Small Company</title>
-    <style>
-        html { font-family: {{template.font_family.title()}};}
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clock-In Software For Small Company" />
+  <meta name="keywords" content="Clock-In, Software, Small Company, Ionut Zapototchi" />
+  <meta name="author" content="Ionut Zapototchi" />
+  <!--Open Graph Metas-->
+  <meta property="og:image" content="#" />
+  <meta property="og:title" content="Clock-In Software For Small Company" />
+  <meta property="og:description" content="Clock-In Software For Small Company" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="theme-color" content="#311b92" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!--Google Font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family={{template.font_family.title()}}:wght@{{template.font_weight}}&display=swap"
+    rel="stylesheet">
+  {% block styles %}
+  {% endblock %}
+  <title>Clock In For Small Company</title>
+  <style>
+    html {font-family: {{template.font_family.title()}};}
+  </style>
 </head>
 
 <body id="scan">
-    {% if session.user %}
-    <header>
-        <!-- top navbar -->
-        <nav class="nav-extended text-shadow" style="background-color: {{ template.navbar_color }};">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('index') }}" class="brand-logo"
-                    style="color:{{ template.navbar_text_color }};">{{template.brand_text.title()}}</a>
-                <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right"> <i
-                        class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('index') }}" style="color:{{ template.navbar_text_color }};">Home</a></li>
-                    <li><a href="{{ url_for('employess') }}"
-                            style="color:{{ template.navbar_text_color }};">Employess</a></li>
-                    <li><a href="{{ url_for('add_employee') }}" style="color:{{ template.navbar_text_color }};">Add
-                            Employee</a></li>
-                    <li><a href="{{ url_for('dashboard') }}"
-                            style="color:{{ template.navbar_text_color }};">Dashboard</a></li>
-                    <li><a href="{{ url_for('logout') }}" style="color:{{ template.navbar_text_color }};">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- mobile sidenav -->
-        <ul class="sidenav text-shadow" id="mobile-nav" style="background-color: {{ template.navbar_color }};">
-            <li>
-                <h4 class="center-align" style="color:{{ template.navbar_text_color }};">
-                    {{template.brand_text.title()}}</h4>
-            </li>
-            <li><a class="center-align" href="{{ url_for('index') }}"
-                    style="color:{{ template.navbar_text_color }};">Home</a></li>
-            <li><a class="center-align" href="{{ url_for('employess') }}"
-                    style="color:{{ template.navbar_text_color }};">Employess</a></li>
-            <li><a class="center-align" href="{{ url_for('add_employee') }}"
-                    style="color:{{ template.navbar_text_color }};">Add Employee</a>
-            </li>
-            <li><a class="center-align" href="{{ url_for('dashboard') }}"
-                    style="color:{{ template.navbar_text_color }};">Dashboard</a></li>
-            <li><a class="center-align" href="{{ url_for('logout') }}"
-                    style="color:{{ template.navbar_text_color }};">Log Out</a></li>
+  {% if session.user %}
+  <header>
+    <!-- top navbar -->
+    <nav class="nav-extended text-shadow" style="background-color: {{ template.navbar_color }};">
+      <div class="nav-wrapper">
+        <a href="{{ url_for('index') }}" class="brand-logo"
+          style="color:{{ template.navbar_text_color }};">{{template.brand_text.title()}}</a>
+        <a href="#" aria-label="Open Menu" data-target="mobile-nav" class="sidenav-trigger right"> <i
+            class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{ url_for('index') }}" style="color:{{ template.navbar_text_color }};">Home</a></li>
+          <li><a href="{{ url_for('employess') }}" style="color:{{ template.navbar_text_color }};">Employess</a></li>
+          <li><a href="{{ url_for('add_employee') }}" style="color:{{ template.navbar_text_color }};">Add
+              Employee</a></li>
+          <li><a href="{{ url_for('dashboard') }}" style="color:{{ template.navbar_text_color }};">Dashboard</a></li>
+          <li><a href="{{ url_for('logout') }}" style="color:{{ template.navbar_text_color }};">Log Out</a>
+          </li>
         </ul>
-    </header>
-    {%endif%}
+      </div>
+    </nav>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    <!-- mobile sidenav -->
+    <ul class="sidenav text-shadow" id="mobile-nav" style="background-color: {{ template.navbar_color }};">
+      <li>
+        <h4 class="center-align" style="color:{{ template.navbar_text_color }};">
+          {{template.brand_text.title()}}</h4>
+      </li>
+      <li><a class="center-align" href="{{ url_for('index') }}" style="color:{{ template.navbar_text_color }};">Home</a>
+      </li>
+      <li><a class="center-align" href="{{ url_for('employess') }}"
+          style="color:{{ template.navbar_text_color }};">Employess</a></li>
+      <li><a class="center-align" href="{{ url_for('add_employee') }}"
+          style="color:{{ template.navbar_text_color }};">Add Employee</a>
+      </li>
+      <li><a class="center-align" href="{{ url_for('dashboard') }}"
+          style="color:{{ template.navbar_text_color }};">Dashboard</a></li>
+      <li><a class="center-align" href="{{ url_for('logout') }}" style="color:{{ template.navbar_text_color }};">Log
+          Out</a></li>
+    </ul>
+  </header>
+  {%endif%}
 
-    <div>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="row center-align">
-            <div class="col s12 m8 offset-m2">
-                <h5 class="text-shadow flashes deep-purple darken-4 center-align">{{ message }} <span class="closebtn"
-                        onclick="this.parentElement.style.display='none';">&times;</span> </h5>
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </div>
-
-    <!--Footer-->
-    {% if session.user %}
-    <footer style="background-color: {{ template.navbar_color }};">
-        <div class="row">
-            <div class="col s6 m6">
-                <h6 class="center-align" style="color:{{ template.navbar_text_color }};">© 2022 Ionut Zapototchi</h6>
-            </div>
-            <div class="col s6 m6">
-                <h6 class="center-align" style="color:{{ template.navbar_text_color }};">Clock-In Software For Small
-                    Company</h6>
-            </div>
-        </div>
-    </footer>
-    {%endif%}
-
-
-    <!--Scripts-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
+  <main>
+    {% block content %}
     {% endblock %}
+  </main>
+
+  <div>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row center-align">
+      <div class="col s12 m8 offset-m2">
+        <h5 class="text-shadow flashes deep-purple darken-4 center-align">{{ message }} <span class="closebtn"
+            onclick="this.parentElement.style.display='none';">&times;</span> </h5>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+
+  <!--Footer-->
+  {% if session.user %}
+  <footer style="background-color: {{ template.navbar_color }};">
+    <div class="row">
+      <div class="col s6 m6">
+        <h6 class="center-align" style="color:{{ template.navbar_text_color }};">© 2022 Ionut Zapototchi</h6>
+      </div>
+      <div class="col s6 m6">
+        <h6 class="center-align" style="color:{{ template.navbar_text_color }};">Clock-In Software For Small
+          Company</h6>
+      </div>
+    </div>
+  </footer>
+  {%endif%}
+
+
+  <!--Scripts-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
 </body>
 {%endfor%}
 

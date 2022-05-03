@@ -3,168 +3,156 @@
 {%for template in settings%}
 <div class="centred container offset-m1 index-container">
 
-    <ul class="collapsible blue-background">
-        <li>
-            <div class="collapsible-header blue-background" style="text-align: center;">If you like to customize
-                template to fit your brilliant business you are in right place!</div>
-        </li>
-        <li>
-            <div class="collapsible-header blue-background">NavBar</div>
-            <div class="collapsible-body">
-                <form class="col s6 offset-m2" method="POST" action="{{ url_for('settings') }}">
-                    <div class=" ">
-                        <!-- Brand Text -->
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input id="brand-name-id" name="brand-name" type="text"
-                                    value="{{template.brand_text.title()}}" class="validate" required>
-                                <label for="brand-name-id">Enter Your Brand Name</label>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button type="submit" class=" s3 btn-large green accent-4 text-shadow">
-                                    Save
-                                </button>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button id="reset-button" form="brand-default" type="submit"
-                                    class=" s3 btn-large red btn text-shadow">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!--Hidden form for reset button-->
-                <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="brand-name" value="Clock-In">
-                </form>
-                <!--Navbar color change form-->
-                <form class="col s6 offset-m2" id="nav-color" method="POST" action="{{ url_for('settings') }}">
-                    <div class=" ">
-                        <!-- Nav Bar Color-->
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input name="navbar-color" type="color" class="validate"
-                                    value="{{ template.navbar_color }}">
-                                <p>Choose Nav Bar Color</p>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="nav-color" type="submit" class=" s3 btn-large green accent-4 text-shadow">
-                                    Save
-                                </button>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="nav-color-default" type="submit"
-                                    class=" s3 btn-large red btn text-shadow">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!-- Nav Bar Color Default -->
-                <form method="POST" id="nav-color-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="navbar-color" value="#311b92">
-                </form>
-                <!--Menu Text  Color-->
-                <form class="col s6 offset-m2" id="menu-text-color" method="POST" action="{{ url_for('settings') }}">
-                    <div class=" ">
-                        <!-- Menu Text  Color -->
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input name="menu-text-color" type="color" class="validate"
-                                    value="{{ template.navbar_text_color }}">
-                                <p>Choose Menu Text Color</p>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="menu-text-color" type="submit"
-                                    class=" s3 btn-large green accent-4 text-shadow">
-                                    Save
-                                </button>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="menu-text-color-default" type="submit"
-                                    class=" s3 btn-large red btn text-shadow">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!-- NavBar Color-->
-                <form method="POST" id="menu-text-color-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="menu-text-color" value="#FFFFFF">
-                </form>
+  <ul class="collapsible blue-background">
+    <li>
+      <div class="collapsible-header blue-background" style="text-align: center;">If you like to customize
+        template to fit your brilliant business you are in right place!</div>
+    </li>
+    <li>
+      <div class="collapsible-header blue-background">NavBar</div>
+      <div class="collapsible-body">
+        <form class="col s6 offset-m2" method="POST" action="{{ url_for('settings') }}">
+          <div class=" ">
+            <!-- Brand Text -->
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input id="brand-name-id" name="brand-name" type="text" value="{{template.brand_text.title()}}"
+                  class="validate" required>
+                <label for="brand-name-id">Enter Your Brand Name</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <button type="submit" class=" s3 btn-large green accent-4 text-shadow">
+                  Save
+                </button>
+              </div>
+              <div class="input-field col s6 m2">
+                <button id="reset-button" form="brand-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                  Reset
+                </button>
+              </div>
             </div>
-        </li>
-        <li>
-            <div class="collapsible-header blue-background">Google Font</div>
-            <div class="collapsible-body">
-                <form class="col s6 offset-m2" id="font-family-name" method="POST" action="{{ url_for('settings') }}">
-                    <div class=" ">
-                        <!-- Google Font Name -->
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input id="font-family-input" name="font-name" type="text"
-                                    value="{{template.font_family.title()}}" class="validate" required>
-                                <label for="font-family-input">Enter Google Font Family Name</label>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button type="submit" form="font-family-name"
-                                    class=" s3 btn-large green accent-4 text-shadow">
-                                    Save
-                                </button>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="font-default" type="submit" class=" s3 btn-large red btn text-shadow">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!--Hidden form for reset button-->
-                <form method="POST" id="font-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="font-name" value="Poppins">
-                </form>
-                <form class="col s6 offset-m2" id="font-weight" method="POST" action="{{ url_for('settings') }}">
-                    <div class=" ">
-                        <!-- Google Font Name -->
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input id="font-weight-input" name="font-weight" type="number"
-                                    value="{{template.font_weight}}" min="300" max="700" class="validate" required>
-                                <label for="font-weight-input">Font weight betwen 300 - 700</label>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button type="submit" form="font-weight"
-                                    class=" s3 btn-large green accent-4 text-shadow">
-                                    Save
-                                </button>
-                            </div>
-                            <div class="input-field col s6 m2">
-                                <button form="font-weight-default" type="submit"
-                                    class=" s3 btn-large red btn text-shadow">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!--Hidden form for reset button-->
-                <form method="POST" id="font-weight-default" action="{{ url_for('settings') }}">
-                    <input type="hidden" name="font-weight" value="500">
-                </form>
+          </div>
+        </form>
+        <!--Hidden form for reset button-->
+        <form method="POST" id="brand-default" action="{{ url_for('settings') }}">
+          <input type="hidden" name="brand-name" value="Clock-In">
+        </form>
+        <!--Navbar color change form-->
+        <form class="col s6 offset-m2" id="nav-color" method="POST" action="{{ url_for('settings') }}">
+          <div class=" ">
+            <!-- Nav Bar Color-->
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input name="navbar-color" type="color" class="validate" value="{{ template.navbar_color }}">
+                <p>Choose Nav Bar Color</p>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="nav-color" type="submit" class=" s3 btn-large green accent-4 text-shadow">
+                  Save
+                </button>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="nav-color-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                  Reset
+                </button>
+              </div>
             </div>
-        </li>
-        <li>
-            <div class="collapsible-header blue-background">More settings will be implemented in future</div>
-        </li>
-    </ul>
+          </div>
+        </form>
+        <!-- Nav Bar Color Default -->
+        <form method="POST" id="nav-color-default" action="{{ url_for('settings') }}">
+          <input type="hidden" name="navbar-color" value="#311b92">
+        </form>
+        <!--Menu Text  Color-->
+        <form class="col s6 offset-m2" id="menu-text-color" method="POST" action="{{ url_for('settings') }}">
+          <div class=" ">
+            <!-- Menu Text  Color -->
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input name="menu-text-color" type="color" class="validate" value="{{ template.navbar_text_color }}">
+                <p>Choose Menu Text Color</p>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="menu-text-color" type="submit" class=" s3 btn-large green accent-4 text-shadow">
+                  Save
+                </button>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="menu-text-color-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- NavBar Color-->
+        <form method="POST" id="menu-text-color-default" action="{{ url_for('settings') }}">
+          <input type="hidden" name="menu-text-color" value="#FFFFFF">
+        </form>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header blue-background">Google Font</div>
+      <div class="collapsible-body">
+        <form class="col s6 offset-m2" id="font-family-name" method="POST" action="{{ url_for('settings') }}">
+          <div class=" ">
+            <!-- Google Font Name -->
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input id="font-family-input" name="font-name" type="text" value="{{template.font_family.title()}}"
+                  class="validate" required>
+                <label for="font-family-input">Enter Google Font Family Name</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <button type="submit" form="font-family-name" class=" s3 btn-large green accent-4 text-shadow">
+                  Save
+                </button>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="font-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!--Hidden form for reset button-->
+        <form method="POST" id="font-default" action="{{ url_for('settings') }}">
+          <input type="hidden" name="font-name" value="Poppins">
+        </form>
+        <form class="col s6 offset-m2" id="font-weight" method="POST" action="{{ url_for('settings') }}">
+          <div class=" ">
+            <!-- Google Font Name -->
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input id="font-weight-input" name="font-weight" type="number" value="{{template.font_weight}}"
+                  min="300" max="700" class="validate" required>
+                <label for="font-weight-input">Font weight betwen 300 - 700</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <button type="submit" form="font-weight" class=" s3 btn-large green accent-4 text-shadow">
+                  Save
+                </button>
+              </div>
+              <div class="input-field col s6 m2">
+                <button form="font-weight-default" type="submit" class=" s3 btn-large red btn text-shadow">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!--Hidden form for reset button-->
+        <form method="POST" id="font-weight-default" action="{{ url_for('settings') }}">
+          <input type="hidden" name="font-weight" value="500">
+        </form>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header blue-background">More settings will be implemented in future</div>
+    </li>
+  </ul>
 </div>
-
-
-
 
 {%endfor%}
 {%endblock%}

@@ -266,8 +266,49 @@ In this page we can delete employee details, action is irreversible. We use cloc
 
  - Mobile Wireframe
 
-![Index Mobile Wireframe](readme-assets/wireframes/login-mobile.png)
+![Log In Mobile Wireframe](readme-assets/wireframes/login-mobile.png)
 
+
+### Registration page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Registration page Desktop&Tablet Wireframe](readme-assets/wireframes/register-desktop.png)
+
+ - Mobile Wireframe
+
+![Registration Mobile Wireframe](readme-assets/wireframes/register-mobile.png)
+
+### Verify page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Verify page Desktop&Tablet Wireframe](readme-assets/wireframes/verify-desktop.png)
+
+ - Mobile Wireframe
+
+![Verify Mobile Wireframe](readme-assets/wireframes/verify-mobile.png)
+
+### Resend Verification page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Resend Verification page Desktop&Tablet Wireframe](readme-assets/wireframes/resend-verification-desktop.png)
+
+ - Mobile Wireframe
+
+![Resend Verification Mobile Wireframe](readme-assets/wireframes/resend-verification-mobile.png)
+
+
+### Dashboard page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Dashboard page Desktop&Tablet Wireframe](readme-assets/wireframes/dashboard-desktop.png)
+
+ - Mobile Wireframe
+
+![Dashboard Mobile Wireframe](readme-assets/wireframes/dashboard-mobile.png)
 
 </details>
 

@@ -2,58 +2,57 @@
 {% block content %}
 
 <div class="row card-panel transparent">
-    <form action="{{ url_for('search') }}" method="post" class="col s12">
-        <div class="row valign-wrapper center-align registration">
-            <div class="input-field col s12 m8">
-                <input type="text" name="query" id="query" class="validate" required>
-                <label for="query">Search Employee</label>
-                <span class="helper-text font"
-                    data-error="Search using First Name, Last Name, Email, Clock Nr or Registered By."
-                    data-success="✔️">Search using First Name, Last Name, Email, Clock Nr or Registered By.</span>
-            </div>
-            <div class="col s12 m4">
-                <a href="{{ url_for('employess') }}" class="red btn text-shadow">Reset</a>
-                <button type="submit" class="green accent-4 btn text-shadow">Search
-                </button>
-            </div>
-        </div>
-    </form>
+  <form action="{{ url_for('search') }}" method="post" class="col s12">
+    <div class="row valign-wrapper center-align registration">
+      <div class="input-field col s12 m8">
+        <input type="text" name="query" id="query" class="validate" required>
+        <label for="query">Search Employee</label>
+        <span class="helper-text font"
+          data-error="Search using First Name, Last Name, Email, Clock Nr or Registered By." data-success="✔️">Search
+          using First Name, Last Name, Email, Clock Nr or Registered By.</span>
+      </div>
+      <div class="col s12 m4">
+        <a href="{{ url_for('employess') }}" class="red btn text-shadow">Reset</a>
+        <button type="submit" class="green accent-4 btn text-shadow">Search
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 
 <table class="centered responsive-table container employee-table">
-    {%for employee in employess%}
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Departament</th>
-            <th>Email</th>
-            <th>Clock Nr</th>
-            <th>Start Date</th>
-            <th>Start Time</th>
-            <th>End Date</th>
-            <th>End Time</th>
-            <th>Registered By</th>
-        </tr>
-    </thead>
+  {%for employee in employess%}
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Departament</th>
+      <th>Email</th>
+      <th>Clock Nr</th>
+      <th>Start Date</th>
+      <th>Start Time</th>
+      <th>End Date</th>
+      <th>End Time</th>
+      <th>Registered By</th>
+    </tr>
+  </thead>
 
-    <tbody>
-        <tr>
-            <td>{{ employee.first_name.capitalize() }}</td>
-            <td>{{ employee.last_name.capitalize() }}</td>
-            <td>{{ employee.departament.title() }}</td>
-            <td>{{ employee.email }}</td>
-            <td>{{ employee.clock_nr }}</td>
-            <td>{{ employee.start_date }}</td>
-            <td>{{ employee.start_time }}</td>
-            <td>{{ employee.end_date }}</td>
-            <td>{{ employee.end_time }}</td>
-            <td>{{ employee.registered_by }}</td>
-            <td><a href="{{ url_for('edit_employee', clock_number= employee.clock_nr) }}">Edit</a></td>
-        </tr>
-    </tbody>
-    {%endfor%}
+  <tbody>
+    <tr>
+      <td>{{ employee.first_name.capitalize() }}</td>
+      <td>{{ employee.last_name.capitalize() }}</td>
+      <td>{{ employee.departament.title() }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.clock_nr }}</td>
+      <td>{{ employee.start_date }}</td>
+      <td>{{ employee.start_time }}</td>
+      <td>{{ employee.end_date }}</td>
+      <td>{{ employee.end_time }}</td>
+      <td>{{ employee.registered_by }}</td>
+      <td><a href="{{ url_for('edit_employee', clock_number= employee.clock_nr) }}">Edit</a></td>
+    </tr>
+  </tbody>
+  {%endfor%}
 </table>
-
 
 {%endblock%}

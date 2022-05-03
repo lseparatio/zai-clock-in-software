@@ -4,37 +4,36 @@
 <h3 class="center-align">Verify</h3>
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('verify') }}">
-        <div class="card-panel verify">
-            <!-- email -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <!-- secret code -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="secret" name="secret" type="text" class="validate" required>
-                    <label for="secret">Secret Received In Email</label>
-                </div>
-            </div>
-            <!-- Verify -->
-            <div class="row">
-                <button id="verify-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                    Verify
-                </button>
-            </div>
-            <div class="row">
-                <a id="resend-button" href="{{ url_for('resend_verification') }}"
-                    class="col s12 btn-large light-blue darken-4 text-shadow">
-                    Lost Your Secret Code? Request Again!
-                </a>
-            </div>
+  <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('verify') }}">
+    <div class="card-panel verify">
+      <!-- email -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" name="email" type="email" class="validate" required>
+          <label for="email">Email</label>
         </div>
-    </form>
+      </div>
+      <!-- secret code -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="secret" name="secret" type="text" class="validate" required>
+          <label for="secret">Secret Received In Email</label>
+        </div>
+      </div>
+      <!-- Verify -->
+      <div class="row">
+        <button id="verify-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+          Verify
+        </button>
+      </div>
+      <div class="row">
+        <a id="resend-button" href="{{ url_for('resend_verification') }}"
+          class="col s12 btn-large light-blue darken-4 text-shadow">
+          Lost Your Secret Code? Request Again!
+        </a>
+      </div>
+    </div>
+  </form>
 </div>
-
 
 {% endblock %}

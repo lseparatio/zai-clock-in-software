@@ -4,26 +4,25 @@
 <h3 class="center-align">Resend Verification</h3>
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('resend_verification') }}">
-        <div class="card-panel verify">
-            <!-- email -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
-                    <input id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            
-            <!-- Verify -->
-            <div class="row">
-                <button id="verify-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                    Verify <i class="fas fa-sign-in-alt"></i>
-                </button>
-            </div>
+  <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('resend_verification') }}">
+    <div class="card-panel verify">
+      <!-- email -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
+          <input id="email" name="email" type="email" class="validate" required>
+          <label for="email">Email</label>
         </div>
-    </form>
-</div>
+      </div>
 
+      <!-- Verify -->
+      <div class="row">
+        <button id="verify-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+          Resend Verification <i class="fas fa-sign-in-alt"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
