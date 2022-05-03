@@ -244,8 +244,11 @@ In this page we can delete employee details, action is irreversible. We use cloc
 
 ## Wireframes, i used Balsamiq
 
+![Balsamiq Screen](readme-assets/wireframes/balsamiq-screen.png)
+
+
 <details>
-<summary>Click to expend wireframes</summary>
+<summary>Click to expand wireframes</summary>
 
 ### Index page
 
@@ -310,6 +313,115 @@ In this page we can delete employee details, action is irreversible. We use cloc
 
 ![Dashboard Mobile Wireframe](readme-assets/wireframes/dashboard-mobile.png)
 
+### Settings page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Settings page Desktop&Tablet Wireframe](readme-assets/wireframes/settings-desktop.png)
+
+ - Mobile Wireframe
+
+![Settings Mobile Wireframe](readme-assets/wireframes/settings-mobile.png)
+
+
+### Profile page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Profile page Desktop&Tablet Wireframe](readme-assets/wireframes/profile-desktop.png)
+
+ - Mobile Wireframe
+
+![Profile Mobile Wireframe](readme-assets/wireframes/profile-mobile.png)
+
+
+### Add Admin page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+ (Same as registration page)
+
+![Add Admin page Desktop&Tablet Wireframe](readme-assets/wireframes/register-desktop.png)
+
+ - Mobile Wireframe
+
+![Add Admin Mobile Wireframe](readme-assets/wireframes/register-mobile.png)
+
+
+### Working Now page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Working Now page Desktop&Tablet Wireframe](readme-assets/wireframes/working-now-desktop.png)
+
+ - Mobile Wireframe
+
+![Working Now Mobile Wireframe](readme-assets/wireframes/working-now-mobile.png)
+
+
+### Home Now page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Home Now page Desktop&Tablet Wireframe](readme-assets/wireframes/home-now-desktop.png)
+
+ - Mobile Wireframe
+
+![Home Now Mobile Wireframe](readme-assets/wireframes/home-now-mobile.png)
+
+
+### Add Employee page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Add Employee page Desktop&Tablet Wireframe](readme-assets/wireframes/add-employee-desktop.png)
+
+ - Mobile Wireframe
+
+![Add Employee Mobile Wireframe](readme-assets/wireframes/add-employee-mobile.png)
+
+
+### Employees page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Employees page Desktop&Tablet Wireframe](readme-assets/wireframes/employes-desktop.png)
+
+ - Mobile Wireframe
+
+![Employees Mobile Wireframe](readme-assets/wireframes/employes-mobile.png)
+
+
+### Edit Employee page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Edit Employee page Desktop&Tablet Wireframe](readme-assets/wireframes/edit-employee-desktop.png)
+
+ - Mobile Wireframe
+
+![Edit Employee Mobile Wireframe](readme-assets/wireframes/edit-employee-mobile.png)
+
+
+### Delete Employee page
+
+ - Desktop and tablet wirefame is shared because of minimalistic design
+
+![Delete Employee page Desktop&Tablet Wireframe](readme-assets/wireframes/delete-employee-desktop.png)
+
+ - Mobile Wireframe
+
+![Delete Employee Mobile Wireframe](readme-assets/wireframes/delete-employee-mobile.png)
+
+
+### Nav Bar And Footer
+
+ - Both are site-wide, desktop:
+
+![Nav Bar And Footer Wireframe](readme-assets/wireframes/navbar-desktop.png)
+
+ - Mobile Wireframe
+
+![Nav Bar And Footer Mobile Wireframe](readme-assets/wireframes/navbar-mobile.png)
 </details>
 
 

@@ -46,7 +46,7 @@
             class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{{ url_for('index') }}" style="color:{{ template.navbar_text_color }};">Home</a></li>
-          <li><a href="{{ url_for('employess') }}" style="color:{{ template.navbar_text_color }};">Employess</a></li>
+          <li><a href="{{ url_for('employess') }}" style="color:{{ template.navbar_text_color }};">Employees</a></li>
           <li><a href="{{ url_for('add_employee') }}" style="color:{{ template.navbar_text_color }};">Add
               Employee</a></li>
           <li><a href="{{ url_for('dashboard') }}" style="color:{{ template.navbar_text_color }};">Dashboard</a></li>
@@ -65,7 +65,7 @@
       <li><a class="center-align" href="{{ url_for('index') }}" style="color:{{ template.navbar_text_color }};">Home</a>
       </li>
       <li><a class="center-align" href="{{ url_for('employess') }}"
-          style="color:{{ template.navbar_text_color }};">Employess</a></li>
+          style="color:{{ template.navbar_text_color }};">Employees</a></li>
       <li><a class="center-align" href="{{ url_for('add_employee') }}"
           style="color:{{ template.navbar_text_color }};">Add Employee</a>
       </li>
@@ -90,7 +90,7 @@
     <div class="row center-align">
       <div class="col s12 m8 offset-m2">
         <h5 class="text-shadow flashes deep-purple darken-4 center-align">{{ message }} <span class="closebtn"
-            onclick="this.parentElement.style.display='none';">&times;</span> </h5>
+            onclick="this.parentElement.style.display='none';">&times;</span></h5>
       </div>
     </div>
     {% endfor %}
