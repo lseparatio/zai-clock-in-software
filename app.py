@@ -65,7 +65,7 @@ def index():
             }
             # Insert in clocked_out
             mongo.db.clocked_out.insert_one(clock_out)
-            # Mark clock nr for deletion
+            # Mark clock in for deletion
             clocks = {
                 "first_name": employee["first_name"],
                 "last_name": employee["last_name"],

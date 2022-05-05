@@ -425,3 +425,83 @@ In this page we can delete employee details, action is irreversible. We use cloc
 </details>
 
 
+## Tools / Technologies
+
+- Visual Studio Code
+- HTML
+- CSS
+- JavaScript
+- Python
+- GIMP
+- Microsoft Paint
+- Materialize CSS 1.0.0
+- Ubuntu 20.04 on WSL on Win 10 64bit
+- Virtual Enviroments
+- GIT, GitHub, Heroku, Heroku CLI
+- MongoDB
+
+## Database on MongoDB
+
+
+For database MongoDB was the requirement.
+I used <https://mongodb.com>
+
+![MongoDB Website](readme-assets/database/atlas.png)
+
+<details>
+<summary>Click To See Database Collections</summary>
+
+### Admin Collection
+
+After registration of an admin details are stored in admin collection.  Please notice that email_is_verified is False and there is an verify_secret created. 
+
+![Admin Collection Unverified](readme-assets/database/admin-unverified-database.png)
+
+When user use correct secret code to verify the email address then email_is_verified is updated with true and secret code is deleted, for sequrity and to be able to reuse it if we have milions of registrations daily.
+
+![Admin Collection Verified](readme-assets/database/admin-verified-database.png)
+
+### Clock In Collection
+
+When a employee clock-in using clock nr or clock-in card(ON NFC ONLY), details are stored on this collection. (Date, Time and Clock Nr). Because this is the most used feature, and time sensitive i decided to keep clock in and clock out in separate collections and to store the minimum required informations only here.
+
+![Clock In Collection](readme-assets/database/clock-in.png)
+
+### Clock Out Collection
+
+Same as clock in but when user clock out we store in another collection all the details: Both Clock In and Clock Out and after we delete the respective entry from Clock In. This is because the user can be or clock in or clock out never both.
+
+![Clock Out Collection](readme-assets/database/clock-out.png)
+
+### Clocks Collection
+
+As we said earlier when user clock out we retrieve the informations from clock in before to be deleted, first name and last name from employee collection and clock out details and we build a document in this collection with all the details to be easy accesible for furter queries.
+
+![Clocks Collection](readme-assets/database/clocks.png)
+
+### Employee Collection
+
+In this collection we keep all the details of a employee when is registered by admin. Clock nr is auto generated.
+
+![Employee Collection](readme-assets/database/employee.png)
+
+### Index Template Collection
+
+In this, collection are stored template settings this in only collection that have to be created at script installation.
+
+![Index Collection](readme-assets/database/index-template.png)
+
+</details>
+
+## Images
+
+- Images was taken from: <https://www.pexels.com/>
+
+
+
+## Testing
+
+Responsive Design Checker (Passing all checks)
+
+<a href="https://responsivedesignchecker.com/checker.php?url=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2F&width=1400&height=700" rel="noopener" target="_blank">Click To See</a>
+
