@@ -501,7 +501,15 @@ In this, collection are stored template settings this in only collection that ha
 
 ## Testing
 
-Responsive Design Checker (Passing all checks)
+### Responsive Design Checker (Passing all checks)
 
 <a href="https://responsivedesignchecker.com/checker.php?url=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2F&width=1400&height=700" rel="noopener" target="_blank">Click To See</a>
+
+### LightHouse Tests
+
+#### Mobile Tests
+
+- Index Page 
+
+
 
