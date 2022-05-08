@@ -644,6 +644,59 @@ Settings page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A
 
 ![Settings Page](readme-assets/html-validator/settings.png)
 
+- Settings Page
 
+Settings page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fsettings%2F" rel="noopener" target="_blank">Click To See</a>
+
+![Settings Page](readme-assets/html-validator/settings.png)
+
+- Profile Page
+
+Profile page validator link will throw 500 for some reason: <a href="https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fprofile" rel="noopener" target="_blank">Click To See</a>
+
+Page was checked by source code: 
+
+![Profile Page](readme-assets/html-validator/profile.png)
+
+- Working Now Page
+
+Working Now validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fworking-now" rel="noopener" target="_blank">Click To See</a>
+
+![Working Now](readme-assets/html-validator/working.png)
+
+- Home Now Page
+
+Home Now validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fhome-now" rel="noopener" target="_blank">Click To See</a>
+
+![Home Now](readme-assets/html-validator/home.png)
+
+- Add Employee Page
+
+Add Employee validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fadd-employee" rel="noopener" target="_blank">Click To See</a>
+
+![Add Employee](readme-assets/html-validator/add-employee.png)
+
+- Presence Page
+
+Presence validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fpresence" rel="noopener" target="_blank">Click To See</a>
+
+![Presence](readme-assets/html-validator/presence.png)
+
+- Employees Page
+
+Employees validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Femployess" rel="noopener" target="_blank">Click To See</a>
+
+![Employees](readme-assets/html-validator/employees.png)
+
+- Verify Page
+
+Verify validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fverify" rel="noopener" target="_blank">Click To See</a>
+
+![Verify](readme-assets/html-validator/verify.png)
+</details>
+
+
+
+ 
 
 
