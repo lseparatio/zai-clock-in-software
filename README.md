@@ -705,6 +705,16 @@ I did the check against my code only by code input to avoid Materialize errors.
 
 ![CSS Validator](readme-assets/css-validator/css-validator.png)
 
- 
+ ### JavaScript Tests
+
+I have 2 javascripts files because i wanted some functions to be available only in index page. And like this i avoided some console logs errors.
+
+- Index JS
+
+![Index JS Validator](readme-assets/js-validator/index-js.png)
+
+- Scripts Site-Wide JS
+
+![Index JS Validator](readme-assets/js-validator/scripts-js.png)
 
 
