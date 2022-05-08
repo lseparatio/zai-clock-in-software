@@ -764,7 +764,7 @@ git push heroku main
 And your app will be deployed to Heroku.
 
 - Last steps will be to to in heroku website, access your new created app and go to settings and then scroll the page and click on Reveal Config Vars.
-- Now you will need to copy yours variables from env and save them in this place. Mandatory are 3 variables as you see in the photo:
+- Now you will need to copy your variables from env and save them in this place. Mandatory are 3 variables as you see in the image:
 
 ![Index JS Validator](readme-assets/img/heroku.png)
 
@@ -772,3 +772,17 @@ And your app will be deployed to Heroku.
 <https://kinsta.com/blog/gmail-smtp-server/>
 
 - Congratulations your app is up and running on url provided by Heroku!
+
+## Credits / Technologies
+
+- Materialize - For well documented css framework
+- Pexels - For images
+- GIMP - For Image processing
+- Favicon.io - For Favicon
+- Google Fonts - For Poppins font.
+- Code Institute - For brilliant lessons from where i learn to do this.
+- <https://unlayer.com/> - For Email Template
+- <https://web.dev/nfc/> - For Briliant NFC tutorial.
+
+
+## Thank you for reading. For any questions don't hesitate to contact me. Kind Regards, Ionut Zapototchi
