@@ -717,4 +717,58 @@ I have 2 javascripts files because i wanted some functions to be available only 
 
 ![Index JS Validator](readme-assets/js-validator/scripts-js.png)
 
+## Deployment
 
+- For This script you will need an account on Heroku <https://heroku.com>
+For This script you will need an account on MongoDB for Database <https://mongodb.com>
+- In top menu press CODE > Download ZIP or clone the project in VS Code 
+- In your system you need to have to have locally installed: Python 3.10.4, pip3, GIT, Heroku Cli.
+- I am using a development environment composet like: Win 10 64 Bit, Python 3.10.4, WSL - Ubuntu:20.04. On Ubuntu: VENV, GIT, HEROKU CLI. VS Code is in Windows and is accesing Ubuntu enviroment remote.
+I choose to use this setup to benefit from the best tools from Windows and Ubuntu.
+To setup your env like this you can use this tutorial: <https://docs.microsoft.com/en-us/windows/wsl/install>
+
+- Once your development  env is ready and you clone the script from GitHub you need to install all requirements. This can be found in Requirements.txt file. to install fast just open a terminal in VS Code and type next comand: 
+
+```
+ pip3 install -r requirements.txt
+```
+
+This will install all the required packages.
+
+Now go to env_example.py and copy the file and rename it to: env.py.
+
+- Now is time to go to MongoDB site and create a database.
+- After you create the database, is safe to leave it empty. All required fields will be created on first run of the software.
+- Ignore any previous instructions like we need some mandatory fields in database. That was sorted in code.
+- Next you need to take your database conection details and fill them in your env file.
+- Go to MongoDB site click on left on database then the 3 dots next to Browse Collections and Comand line tools
+- Select connect Instructions > Connect Your Application.
+- Select Python and 3.12 or later  and you will get a link: 
+```
+mongodb+srv://username:<password>@cluster0.wiqjj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+```
+- Add the link in your env.py in mongo uri field. Don't forget to replace <password>  and <myFirstDatabase> with your database name and password.
+- If all is ok you should be able to run the app locally.
+- Now to deploy to heroku open your terminal and type:
+```
+heroku login -i
+```
+You will be promted for your login info
+```
+heroku create your_app_name_here
+```
+ To create a new app, replacing your_app_name_here with the name you want to give your app
+```
+git push heroku main
+```
+And your app will be deployed to Heroku.
+
+- Last steps will be to to in heroku website, access your new created app and go to settings and then scroll the page and click on Reveal Config Vars.
+- Now you will need to copy yours variables from env and save them in this place. Mandatory are 3 variables as you see in the photo:
+
+![Index JS Validator](readme-assets/img/heroku.png)
+
+- Email to work you will need to add your SMTP details in same way like the app details. To learn how to get this fallow this tutorial:
+<https://kinsta.com/blog/gmail-smtp-server/>
+
+- Congratulations your app is up and running on url provided by Heroku!

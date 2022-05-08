@@ -3,12 +3,10 @@ import datetime
 import random
 import uuid
 from flask import (
-    Flask, Markup, flash, render_template,
+    Flask, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
 from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
-from pkg_resources import working_set
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -42,6 +40,9 @@ def page_not_found(e):
 @app.route("/", methods=["GET", "POST"])
 def index():
     settings = mongo.db.index_template.find()
+    # Function to populate database with mandatory fields.
+    populate_database()
+
     if request.method == "POST":
         # Check if is clock in
         are_in = mongo.db.clocked_in.find_one(
@@ -538,6 +539,20 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("index"))
+
+
+def populate_database():
+    # Function to populate database with mandatory fields, if database is empty.
+    settings = list(mongo.db.index_template.find())
+    if settings == []:
+        create = {
+            "brand_text": "Clock-In",
+            "navbar_color": "#311b92",
+            "font_family": "Poppins",
+            "font_weight": "500",
+            "navbar_text_color": "#FFFFFF"
+        }
+        mongo.db.index_template.insert_one(create)
 
 
 if __name__ == "__main__":
