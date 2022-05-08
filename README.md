@@ -511,5 +511,94 @@ In this, collection are stored template settings this in only collection that ha
 
 - Index Page 
 
+![Index Page](readme-assets/lighthouse-tests/mobile/index.png)
+
+- Login Page
+
+![Login Page](readme-assets/lighthouse-tests/mobile/login.png)
+
+- Register Page
+
+![Register Page](readme-assets/lighthouse-tests/mobile/register.png)
+
+- Dashboard Page
+
+![Dashboard Page](readme-assets/lighthouse-tests/mobile/dashboard.png)
+
+- Settings Page
+
+![Settings Page](readme-assets/lighthouse-tests/mobile/settings.png)
+
+- Profile Page
+
+![Profile Page](readme-assets/lighthouse-tests/mobile/profile.png)
+
+- Working Now Page
+
+![Working Now](readme-assets/lighthouse-tests/mobile/working.png)
+
+- Home Now Page
+
+![Home Now](readme-assets/lighthouse-tests/mobile/home.png)
+
+- Add Employee Page
+
+![Add Employee](readme-assets/lighthouse-tests/mobile/add-employee.png)
+
+- Presence Page
+
+![Presence Page](readme-assets/lighthouse-tests/mobile/presence.png)
+
+- Employees Page
+
+![Employees Page](readme-assets/lighthouse-tests/mobile/employees.png)
+
+#### Desktop Tests
+
+- Index Page 
+
+![Index Page](readme-assets/lighthouse-tests/desktop/index.png)
+
+- Login Page
+
+![Login Page](readme-assets/lighthouse-tests/desktop/login.png)
+
+- Register Page
+
+![Register Page](readme-assets/lighthouse-tests/desktop/register.png)
+
+- Dashboard Page
+
+![Dashboard Page](readme-assets/lighthouse-tests/desktop/dashboard.png)
+
+- Settings Page
+
+![Settings Page](readme-assets/lighthouse-tests/desktop/settings.png)
+
+- Profile Page
+
+![Profile Page](readme-assets/lighthouse-tests/desktop/profile.png)
+
+- Working Now Page
+
+![Working Now](readme-assets/lighthouse-tests/desktop/working.png)
+
+- Home Now Page
+
+![Home Now](readme-assets/lighthouse-tests/desktop/home.png)
+
+- Add Employee Page
+
+![Add Employee](readme-assets/lighthouse-tests/desktop/add-employee.png)
+
+- Presence Page
+
+![Presence Page](readme-assets/lighthouse-tests/desktop/presence.png)
+
+- Employees Page
+
+![Employees Page](readme-assets/lighthouse-tests/desktop/employees.png)
+
+
 
 
