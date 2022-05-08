@@ -695,7 +695,15 @@ Verify validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fz
 ![Verify](readme-assets/html-validator/verify.png)
 </details>
 
+### Css Tests
 
+All CSS tests pass, error and warning is from materialize.min.css with is from Materialize. My css is error and warning free.
+
+Validator link: <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#errors" rel="noopener" target="_blank">Click To See</a>
+
+I did the check against my code only by code input to avoid Materialize errors.
+
+![CSS Validator](readme-assets/css-validator/css-validator.png)
 
  
 
