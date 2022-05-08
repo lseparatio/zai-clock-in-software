@@ -509,6 +509,9 @@ In this, collection are stored template settings this in only collection that ha
 
 #### Mobile Tests
 
+<details>
+<summary>Click To Expand Mobile Tests</summary>
+
 - Index Page 
 
 ![Index Page](readme-assets/lighthouse-tests/mobile/index.png)
@@ -553,7 +556,12 @@ In this, collection are stored template settings this in only collection that ha
 
 ![Employees Page](readme-assets/lighthouse-tests/mobile/employees.png)
 
+</details>
+
 #### Desktop Tests
+
+<details>
+<summary>Click To Expand Desktop Tests</summary>
 
 - Index Page 
 
@@ -598,6 +606,43 @@ In this, collection are stored template settings this in only collection that ha
 - Employees Page
 
 ![Employees Page](readme-assets/lighthouse-tests/desktop/employees.png)
+
+</details>
+
+### HTML Validator Tests
+
+<details>
+<summary>Click to open Validator Tests</summary>
+
+- Index Page
+
+Index page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2F" rel="noopener" target="_blank">Click To See</a>
+
+![Index Page](readme-assets/html-validator/index.png)
+
+- Login Page
+
+Login page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Flogin" rel="noopener" target="_blank">Click To See</a>
+
+![Login Page](readme-assets/html-validator/login.png)
+
+- Register Page
+
+Register page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fregister" rel="noopener" target="_blank">Click To See</a>
+
+![Register Page](readme-assets/html-validator/register.png)
+
+- Dashboard Page
+
+Dashboard page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fdashboard" rel="noopener" target="_blank">Click To See</a>
+
+![Dashboard Page](readme-assets/html-validator/dashboard.png)
+
+- Settings Page
+
+Settings page validator link: <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fzai-clock-in-software.herokuapp.com%2Fsettings%2F" rel="noopener" target="_blank">Click To See</a>
+
+![Settings Page](readme-assets/html-validator/settings.png)
 
 
 
