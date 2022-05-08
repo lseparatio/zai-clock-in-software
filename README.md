@@ -3,6 +3,7 @@
 Welcome, this project is 
 this project is a clock in software for small business
 
+This project is a MVP. In future versions will be changed in a SAAS model app and will be integrated with full payroll, automatic HMRC submissions, mobile apps and many more.
 
 See this project on live enviroment on GitHub Pages here: <https://zai-clock-in-software.herokuapp.com/>
 
